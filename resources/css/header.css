@@ -1,0 +1,88 @@
+.header{
+    background-color: #dcdcdc;
+}
+
+#header1 {
+    color: #dcdcdc;
+    background-color: #404040;
+}
+
+.news-update{
+    background-color: #404040;
+}
+
+.times {
+    background-color: #88c050;
+    font-style: normal;
+}
+
+
+#logo-name{
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #252525;
+}
+
+#logo-name img{
+    width: 50px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#logo-name span{
+    margin-left: 10px;
+}
+
+nav ul {
+    overflow: hidden;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fafafa;
+    min-width: 500px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-header{
+    float: right;
+    margin-top: 18px;
+}
+
+.navBar{
+    margin-left: 5px;
+    color: #252525;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: large;
+}
+
+.navBar:hover{
+    background-color: #dcdcdc;
+    color: #88c050;
+}
+
+.active{
+    background-color: #88c050 !important;
+    color: #dcdcdc;
+}
+
+.active:hover{
+    color: #252525;
+}
