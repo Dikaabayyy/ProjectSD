@@ -4,14 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class StudentSchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function stddata1()
     {
-        return view('admin.components.dashboard');
+        return view('admin.components.students.class1');
+    }
+
+    public function stddata2()
+    {
+        return view('admin.components.students.class2');
+    }
+
+    public function stddata3()
+    {
+        return view('admin.components.students.class3');
+    }
+
+    public function stddata4()
+    {
+        return view('admin.components.students.class4');
+    }
+
+    public function stddata5()
+    {
+        return view('admin.components.students.class5');
+    }
+
+    public function stddata6()
+    {
+        return view('admin.components.students.class6');
+    }
+
+    public function stdadddata()
+    {
+        return view('admin.components.students.addstd');
     }
 
     /**

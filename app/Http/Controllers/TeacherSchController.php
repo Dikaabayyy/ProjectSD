@@ -4,14 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class TeacherSchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function tcrdata()
     {
-        return view('admin.components.dashboard');
+        return view('admin.components.teachers.tcrdata');
+    }
+
+    public function tcreditdata()
+    {
+        return view('admin.components.teachers.tcreditdata');
+    }
+
+    public function tcradddata()
+    {
+        return view('admin.components.teachers.tcradddata');
     }
 
     /**
