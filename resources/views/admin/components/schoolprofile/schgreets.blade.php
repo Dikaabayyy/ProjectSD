@@ -29,23 +29,32 @@
                 </li>
               </ul>
 
-              <div class="tab-content pt-2" id="borderedTabContent">
-                <div class="tab-pane fade show active" id="bordered-greets-sekolah" role="tabpanel" aria-labelledby="greets-sekolah-tab">
-                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                </div>
+              @foreach ($greets as $h)
 
-                <div class="tab-pane fade" id="bordered-edit-greets" role="tabpanel" aria-labelledby="edit-greets-tab">
-                    <div class="row">
-                        <div class="mt-3 mb-3">
-                          <textarea class="form-control" rows="5" style="resize: none">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                          </textarea>
-                        </div>
+                <div class="tab-content pt-2" id="borderedTabContent">
+                    <div class="tab-pane fade show active" id="bordered-greets-sekolah" role="tabpanel" aria-labelledby="greets-sekolah-tab" style="text-align: justify">
+                        @foreach (explode("\n", $h->greets) as $paragraph)
+                            <p>{{ $paragraph }}</p>
+                        @endforeach
                     </div>
-                    <div class="">
-                        <button type="button" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+
+                    <div class="tab-pane fade" id="bordered-edit-greets" role="tabpanel" aria-labelledby="edit-greets-tab">
+                        <form action="/adm-update-sambutan-kepala-sekolah-{{ $h->slug }}" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            <input type="text" name="slug" hidden value="{{ $h->slug }}">
+
+                            <div class="row">
+                                <div class="mt-3 mb-3">
+                                    <textarea class="form-control" rows="12" style="resize: none" name="greets">{{ $h->greets }}</textarea>
+                                </div>
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-              </div><!-- End Bordered Tabs -->
+                </div><!-- End Bordered Tabs -->
+            @endforeach
 
             </div>
 

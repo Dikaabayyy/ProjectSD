@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AboutSch;
 use App\Models\VisiMisi;
+use App\Models\GoalsSch;
+use App\Models\GreetsSch;
 
 class AboutSchController extends Controller
 {
@@ -70,7 +72,24 @@ class AboutSchController extends Controller
     /*****************************/
     public function schgoals()
     {
-        return view('admin.components.schoolprofile.goals');
+        $goals = GoalsSch::get();
+        return view('admin.components.schoolprofile.goals', compact('goals'));
+    }
+
+    public function schgoals_update(Request $request, $slug)
+    {
+        $goals = GoalsSch::where('slug', $slug)->firstOrFail();
+
+        $request->validate([
+            'goals' => 'required',
+            'slug' => 'required'
+        ]);
+
+        $goals->update($request->only('goals', 'slug'));
+
+
+        $goals = GoalsSch::get();
+        return redirect()->back()->with('success', 'Data Telah di Update!');
     }
 
     /*****************************/
@@ -78,7 +97,23 @@ class AboutSchController extends Controller
     /*****************************/
     public function schgreets()
     {
-        return view('admin.components.schoolprofile.schgreets');
+        $greets = GreetsSch::get();
+        return view('admin.components.schoolprofile.schgreets', compact('greets'));
+    }
+
+    public function schgreets_update(Request $request, $slug)
+    {
+        $greets = GreetsSch::where('slug', $slug)->firstOrFail();
+
+        $request->validate([
+            'greets' => 'required',
+            'slug' => 'required'
+        ]);
+
+        $greets->update($request->only('greets', 'slug'));
+
+        $greets = GreetsSch::get();
+        return redirect()->back()->with('success', 'Data Telah di Update!');
     }
 
     /*****************************/

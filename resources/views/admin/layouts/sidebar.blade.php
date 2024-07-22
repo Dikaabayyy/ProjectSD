@@ -46,17 +46,17 @@
       </li><!-- End School Profile Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('schprograms') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#programs-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('extra', 'addextra', 'editextra', 'activity', 'editactivity') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#programs-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Program Sekolah</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="programs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-ektrakurikuler">
+            <a href="/adm-extrakurikuler" class="{{ Route::is('extra') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Ekstrakurikuler</span>
             </a>
           </li>
           <li>
-            <a href="/adm-kegiatan-sekolah">
+            <a href="/adm-kegiatan-sekolah" class="{{ Route::is('activity') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Kegiatan Sekolah</span>
             </a>
           </li>

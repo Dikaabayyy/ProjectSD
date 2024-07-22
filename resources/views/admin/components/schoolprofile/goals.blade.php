@@ -29,23 +29,34 @@
                 </li>
               </ul>
 
+              @foreach ($goals as $g)
               <div class="tab-content pt-2" id="borderedTabContent">
-                <div class="tab-pane fade show active" id="bordered-tujuan-sekolah" role="tabpanel" aria-labelledby="tujuan-sekolah-tab">
-                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+
+
+                <div class="tab-pane fade show active" id="bordered-tujuan-sekolah" role="tabpanel" aria-labelledby="tujuan-sekolah-tab" style="text-align: justify">
+                    @foreach (explode("\n", $g->goals) as $paragraph)
+                        <p>{{ $paragraph }}</p>
+                    @endforeach
                 </div>
 
                 <div class="tab-pane fade" id="bordered-edit-tujuan" role="tabpanel" aria-labelledby="edit-tujuan-tab">
-                    <div class="row">
-                        <div class="mt-3 mb-3">
-                          <textarea class="form-control" rows="5" style="resize: none">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                          </textarea>
+                    <form action="/adm-update-tujuan-sekolah-{{ $g->slug }}" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        <input type="text" name="slug" hidden value="{{ $g->slug }}">
+
+                        <div class="row">
+                            <div class="mt-3 mb-3">
+                                <textarea class="form-control" rows="12" style="resize: none" name="goals">{{ $g->goals }}</textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="">
-                        <button type="button" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                    </div>
+                        <div class="">
+                            <button type="submit" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+                        </div>
+
+                    </form>
                 </div>
-              </div><!-- End Bordered Tabs -->
+            </div><!-- End Bordered Tabs -->
+            @endforeach
 
             </div>
 

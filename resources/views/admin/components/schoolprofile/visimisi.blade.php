@@ -38,7 +38,9 @@
                     </div>
 
                     <div class="tab-pane fade" id="bordered-misi-sekolah" role="tabpanel" aria-labelledby="misi-sekolah-tab">
-                        {{ $v->misi }}
+                        @foreach (explode("\n", $v->misi) as $paragraph)
+                            <p>{{ $paragraph }}</p>
+                        @endforeach
                     </div>
 
                 @endforeach

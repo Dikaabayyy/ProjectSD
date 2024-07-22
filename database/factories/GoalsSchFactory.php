@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AboutSch>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GoalsSch>
  */
-class AboutSchFactory extends Factory
+class GoalsSchFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class AboutSchFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'about' => fake(),
+            'goals' => fake(),
             'slug' => fake(),
             'remember_token' => Str::random(10),
         ];

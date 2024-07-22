@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AboutSchSeeder::class);
+        $this->call(GoalsSchSeeder::class);
+        $this->call(GreetsSchSeeder::class);
+        $this->call(VisiMisiSeeder::class);
+        $this->call(ExtraSeeder::class);
+        $this->call(ActivitySeeder::class);
     }
 }

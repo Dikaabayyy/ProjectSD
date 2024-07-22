@@ -4,11 +4,19 @@
 }
 
 #tb-tcrdata .pct{
-    width: 200px;
+    width: 180px;
+}
+
+#tb-tcrdata .nm{
+    width: 250px;
+}
+
+#tb-tcrdata .dsc{
+    width: 500px;
 }
 
 #tb-tcrdata .opt{
-    width: 200px;
+    width: 150px;
     text-align: center;
 }
 
