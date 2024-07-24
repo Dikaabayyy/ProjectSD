@@ -272,7 +272,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Ngentrong',
                 'birth_date' => Carbon::create(1975, 1, 6),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $sunaryatin->id
             ],
             [
@@ -281,7 +280,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Banyumas',
                 'birth_date' => Carbon::create(1963, 3, 11),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $sadiyah->id
             ],
             [
@@ -290,7 +288,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Bukateja',
                 'birth_date' => Carbon::create(1966, 9, 8),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $jamini->id
             ],
             [
@@ -299,7 +296,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Abepura',
                 'birth_date' => Carbon::create(1970, 1, 3),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $wahyuningsih->id
             ],
             [
@@ -308,7 +304,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Malang',
                 'birth_date' => Carbon::create(1971, 6, 15),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $jumaati->id
             ],
             [
@@ -317,7 +312,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Sleman',
                 'birth_date' => Carbon::create(1964, 2, 8),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $sularni->id
             ],
             [
@@ -326,7 +320,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Jember',
                 'birth_date' => Carbon::create(1967, 10, 30),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $sugiyati->id
             ],
             [
@@ -335,7 +328,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Purwodadi',
                 'birth_date' => Carbon::create(1972, 4, 27),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $ruslan->id
             ],
             [
@@ -344,7 +336,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Leihitu',
                 'birth_date' => Carbon::create(1972, 9, 15),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $janiba->id
             ],
             [
@@ -353,7 +344,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Betaf',
                 'birth_date' => Carbon::create(1978, 5, 12),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $nurdia->id
             ],
             [
@@ -362,7 +352,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Blora',
                 'birth_date' => Carbon::create(1968, 3, 15),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $lasiban->id
             ],
             [
@@ -371,7 +360,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Semarang',
                 'birth_date' => Carbon::create(1972, 3, 14),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $hely->id
             ],
             [
@@ -380,7 +368,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Semarang',
                 'birth_date' => Carbon::create(1972, 3, 3),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $irkham->id
             ],
             [
@@ -389,7 +376,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Surabaya',
                 'birth_date' => Carbon::create(1970, 2, 23),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $yuninar->id
             ],
             [
@@ -398,7 +384,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Biak',
                 'birth_date' => Carbon::create(1977, 12, 28),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $eka->id
             ],
             [
@@ -407,7 +392,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Nganjuk',
                 'birth_date' => Carbon::create(1983, 1, 2),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $winarsih->id
             ],
             [
@@ -416,7 +400,6 @@ class TeacherSeeder extends Seeder
                 'brith_place' => 'Sentani',
                 'birth_date' => Carbon::create(1991, 7, 27),
                 'status' => 'Kawin',
-                'img_name' => 'profile-img.png',
                 'teachers_datas_id'=> $ati->id
             ],
 

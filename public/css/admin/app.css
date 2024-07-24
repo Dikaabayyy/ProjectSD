@@ -385,3 +385,38 @@
     margin-bottom: 10px;
     margin-right: 30px;
 }
+
+.galery-photo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#photo-card {
+    width: 420px;
+}
+
+#photo-card .card-title{
+    text-align: center;
+    padding: 0px;
+}
+
+#photo-card .photo-view{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#photo-card img{
+    height: 200px;
+    width: auto;
+}
+
+#photo-card .desc-photo{
+    text-align: justify;
+}
+
+#photo-card .card-footer{
+    text-align: end;
+    padding: 12px;
+}

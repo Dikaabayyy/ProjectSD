@@ -8,25 +8,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
 /*   Admin Controller   */
-use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\AboutSchController;
+use App\Http\Controllers\Admin\ExtraController;
+use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AgendaController;
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\TeacherSchController;
-use App\Http\Controllers\StudentSchController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\FacilityController;
+use App\Http\Controllers\Admin\TeacherSchController;
+use App\Http\Controllers\Admin\StudentSchController;
+use App\Http\Controllers\Admin\AdminController;
 
-
+use App\Http\Controllers\Auth\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-
-
-
 
 
 
@@ -73,45 +73,45 @@ Route::get('/adm-struktur-sekolah', [AboutSchController::class, 'schstructure'])
 
 
 /*  Extracurricular School  */
-Route::get('/adm-extrakurikuler', [ProgramController::class, 'extra'])->name('extra');
+Route::get('/adm-extrakurikuler', [ExtraController::class, 'index'])->name('extra');
 
-Route::get('/adm-tambah-data-extrakurikuler', [ProgramController::class, 'addextra'])->name('addextra');
+Route::get('/adm-tambah-data-extrakurikuler', [ExtraController::class, 'create'])->name('addextra');
 
-Route::post('/adm-simpan-data-extrakurikuler', [ProgramController::class, 'storeextra']);
+Route::post('/adm-simpan-data-extrakurikuler', [ExtraController::class, 'store']);
 
-Route::get('/adm-edit-data-extrakurikuler-{slug}', [ProgramController::class, 'editextra'])->name('editextra');
+Route::get('/adm-edit-data-extrakurikuler-{slug}', [ExtraController::class, 'edit'])->name('editextra');
 
-Route::post('/adm-update-data-extrakurikuler-{slug}', [ProgramController::class, 'updateextra']);
+Route::post('/adm-update-data-extrakurikuler-{slug}', [ExtraController::class, 'update']);
 
-Route::post('/adm-hapus-data-extrakurikuler-{slug}', [ProgramController::class, 'deleteextra']);
+Route::post('/adm-hapus-data-extrakurikuler-{slug}', [ExtraController::class, 'destroy']);
 
 
 /*  School's Activity  */
-Route::get('/adm-kegiatan-sekolah', [ProgramController::class, 'activity'])->name('activity');
+Route::get('/adm-kegiatan-sekolah', [ActivityController::class, 'index'])->name('activity');
 
-Route::get('/adm-tambah-data-kegiatan', [ProgramController::class, 'addactivity'])->name('addactivity');
+Route::get('/adm-tambah-data-kegiatan', [ActivityController::class, 'create'])->name('addactivity');
 
-Route::post('/adm-simpan-data-kegiatan', [ProgramController::class, 'storeactivity']);
+Route::post('/adm-simpan-data-kegiatan', [ActivityController::class, 'store']);
 
-Route::get('/adm-edit-data-kegiatan-{slug}', [ProgramController::class, 'editactivity'])->name('editactivity');
+Route::get('/adm-edit-data-kegiatan-{slug}', [ActivityController::class, 'edit'])->name('editactivity');
 
-Route::post('/adm-update-data-kegiatan-{slug}', [ProgramController::class, 'updateactivity']);
+Route::post('/adm-update-data-kegiatan-{slug}', [ActivityController::class, 'update']);
 
-Route::post('/adm-hapus-data-kegiatan-{slug}', [ProgramController::class, 'deleteactivity']);
+Route::post('/adm-hapus-data-kegiatan-{slug}', [ActivityController::class, 'destroy']);
 
 
 /*  School's Facility  */
-Route::get('/adm-fasilitas-sekolah', [ProgramController::class, 'facility'])->name('facility');
+Route::get('/adm-fasilitas-sekolah', [FacilityController::class, 'index'])->name('facility');
 
-Route::get('/adm-tambah-data-fasilitas', [ProgramController::class, 'addfacility'])->name('addfacility');
+Route::get('/adm-tambah-data-fasilitas', [FacilityController::class, 'create'])->name('addfacility');
 
-Route::post('/adm-simpan-data-fasilitas', [ProgramController::class, 'storefacility'])->name('addfacility');
+Route::post('/adm-simpan-data-fasilitas', [FacilityController::class, 'store']);
 
-Route::get('/adm-edit-data-fasilitas-{slug}', [ProgramController::class, 'editfacility'])->name('editfacility');
+Route::get('/adm-edit-data-fasilitas-{slug}', [FacilityController::class, 'edit'])->name('editfacility');
 
-Route::post('/adm-update-data-fasilitas-{slug}', [ProgramController::class, 'updatefacility']);
+Route::post('/adm-update-data-fasilitas-{slug}', [FacilityController::class, 'update']);
 
-Route::post('/adm-hapus-data-fasilitas-{slug}', [ProgramController::class, 'deletefacility']);
+Route::post('/adm-hapus-data-fasilitas-{slug}', [FacilityController::class, 'destroy']);
 
 
 
@@ -142,6 +142,21 @@ Route::get('/adm-edit-data-agenda-{slug}', [AgendaController::class, 'edit'])->n
 Route::post('/adm-update-data-agenda-{slug}', [AgendaController::class, 'update'])->name('editagenda');
 
 Route::post('/adm-hapus-data-agenda-{slug}', [AgendaController::class, 'destroy']);
+
+
+
+/*  School's Gallery  */
+Route::get('/adm-galeri-foto', [GalleryController::class, 'index'])->name('photo');
+
+Route::get('/adm-tambah-data-galeri-foto', [GalleryController::class, 'create'])->name('addphoto');
+
+Route::post('/adm-simpan-data-galeri-foto', [GalleryController::class, 'store']);
+
+Route::get('/adm-edit-data-galeri-foto-{slug}', [GalleryController::class, 'edit'])->name('editphoto');
+
+Route::post('/adm-update-data-galeri-foto-{slug}', [GalleryController::class, 'update'])->name('editphoto');
+
+Route::post('/adm-hapus-data-galeri-foto-{slug}', [GalleryController::class, 'destroy']);
 
 
 
@@ -180,3 +195,8 @@ Route::get('/adm-data-siwa-kelas-4', [StudentSchController::class, 'stddata4'])-
 Route::get('/adm-data-siwa-kelas-5', [StudentSchController::class, 'stddata5'])->name('stddata5');
 
 Route::get('/adm-data-siwa-kelas-6', [StudentSchController::class, 'stddata6'])->name('stddata6');
+
+
+
+/*   Admin's Profile   */
+Route::get('/adm-profile', [ProfileController::class, 'index'])->name('profile');

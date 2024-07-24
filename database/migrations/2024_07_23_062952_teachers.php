@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('brith_place');
             $table->date('birth_date');
             $table->string('status');
-            $table->string('img_name');
+            $table->string('img_name')->default('images/profile/profile-img.png');
             $table->foreignId('teachers_datas_id')->nullable()->index();
             $table->rememberToken();
             $table->timestamps();

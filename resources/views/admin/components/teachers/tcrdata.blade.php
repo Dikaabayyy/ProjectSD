@@ -56,7 +56,7 @@
                                     {{ $index +1 }}
                                 </th>
                                 <td class="pct">
-                                    <img src="{{ asset('css/admin/asset/img/'.$t->img_name) }}" alt="" class="img-tcr">
+                                    <img src="{{ asset('storage/'.$t->img_name) }}" alt="" class="img-tcr">
                                 </td>
                                 <td class="data">
                                     <div class="card mb-0">
