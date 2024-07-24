@@ -1,3 +1,54 @@
+#ops{
+    text-align: end;
+    padding-top: 20px;
+}
+
+#ops .btn-primary{
+    background-color: rgb(0, 140, 255);
+    color: whitesmoke;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#ops .btn-primary:hover{
+    background-color: whitesmoke;
+    color: rgb(0, 140, 255);
+    border: 1px solid rgb(0, 140, 255);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#ops .btn-success{
+    background-color: rgb(0, 175, 0);
+    color: whitesmoke;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#ops .btn-success:hover{
+    background-color: whitesmoke;
+    color: rgb(0, 175, 0);
+    border: 1px solid rgb(0, 175, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#ops .btn-danger{
+    background-color: rgb(255, 0, 0);
+    color: whitesmoke;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#ops .btn-danger:hover{
+    background-color: whitesmoke;
+    color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+
 #tb-tcrdata .nb{
     width: 50px;
     text-align: center;
@@ -59,4 +110,278 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#options .btn-warning{
+    background-color: rgb(255, 230, 0);
+    color: black;
+    border-radius: 10px;
+}
+
+#options .btn-warning:hover{
+    background-color: whitesmoke;
+    border: 1px solid rgb(255, 230, 0);
+    color: black;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#options .btn-danger{
+    background-color: red;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#options .btn-danger:hover{
+    background-color: whitesmoke;
+    border: 1px solid red;
+    color: red;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#options .btn-secondary{
+    background-color: #888;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#options .btn-secondary:hover{
+    background-color: white;
+    border: 1px solid #888;
+    color: #888;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#options .btn-success{
+    background-color: rgb(0, 175, 0);
+    color: whitesmoke;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#options .btn-success:hover{
+    background-color: whitesmoke;
+    color: rgb(0, 175, 0);
+    border: 1px solid rgb(0, 175, 0);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#deletemodal .modal-content{
+    padding: 0px;
+}
+
+#deletemodal .btn-secondary{
+    background-color: #888;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#deletemodal .btn-secondary:hover{
+    background-color: white;
+    border: 1px solid #888;
+    color: #888;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#deletemodal .btn-danger{
+    background-color: red;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#deletemodal .btn-danger:hover{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.sp{
+    margin-bottom: 30px;
+    background-color: cornflowerblue;
+    color: #fefefe;
+    border-radius: 5px;
+    border: 1px solid cornflowerblue;
+    padding: 7px;
+    transition: 0.5s;
+}
+
+.sp:hover{
+    color: cornflowerblue;
+    background-color: #fefefe;
+    border: 1px solid cornflowerblue;
+    transition: 0.5s;
+}
+
+.title-db{
+    text-align: center;
+    font-size: 32px !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(140, 0, 255);
+    text-shadow: 2px 2px 8px #00aeff;
+}
+
+#schools-profile{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#schools-profile .card-title{
+    color: rgb(140, 0, 255);
+    font-size: 20px;
+}
+
+#vm-profile{
+    margin-bottom: 20px;
+}
+
+#vm-profile .card-title{
+    color: rgb(140, 0, 255);
+    font-size: 20px;
+}
+
+#visi-db h6{
+    color: rgba(140, 0, 255, 0.5);
+    font-size: 20px;
+}
+
+#misi-db h6{
+    color: rgba(140, 0, 255, 0.5);
+    font-size: 20px;
+}
+
+#goals-profile{
+    margin-bottom: 20px;
+}
+
+#goals-profile .card-title{
+    color: rgb(140, 0, 255);
+    font-size: 20px;
+}
+
+#teachers-data .card-title{
+    color: rgb(140, 0, 255);
+    text-align: center;
+    font-size: 20px;
+}
+
+#teachers-data .ph{
+    width: 150px;
+    text-align: center;
+}
+
+#teachers-data img{
+    width: 100px;
+}
+
+#teachers-data .nm{
+    text-align: center;
+}
+
+.img-tcr{
+    width: 150px;
+}
+
+/* Gaya kustom untuk pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.pagination li {
+    margin: 0 5px;
+}
+.pagination li a, .pagination li span {
+    color: rgb(140, 0, 255);
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid rgba(140, 0, 255, 0.5);
+    border-radius: 4px;
+}
+.pagination li a:hover {
+    background-color: rgba(140, 0, 255, 0.5);
+    color: whitesmoke;
+    transition: 0.5s;
+}
+.pagination .active span {
+    background-color: rgb(140, 0, 255);
+    color: white;
+    border: 1px solid rgb(140, 0, 255);
+    border-radius: 5px;
+}
+.pagination .disabled span {
+    display: none;
+}
+
+.totaldata{
+    text-align: center;
+    padding-top: 10px;
+    font-size: large;
+}
+
+#searchbar input{
+    border-radius: 5px;
+    border: 0.1px solid rgb(180, 180, 180);
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#searchbar button{
+    border-radius: 5px;
+    border: 1px solid rgb(140, 0, 255);
+    background-color: rgb(140, 0, 255);
+    color: whitesmoke;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#searchbar button:hover{
+    border-radius: 5px;
+    border: 1px solid rgb(140, 0, 255);
+    background-color: whitesmoke;
+    color: rgb(140, 0, 255);
+    padding: 5px;
+    margin-right: 10px;
+    transition: 0.5s;
+}
+
+#searchbar a{
+    border-radius: 5px;
+    border: 1px solid rgb(255, 0, 0);
+    background-color: rgb(255, 0, 0);
+    color: whitesmoke;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#searchbar a:hover{
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 0, 0);
+    background-color: white;
+    color: rgb(255, 0, 0);
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    transition: 0.5px;
+}
+
+.prev-news{
+    width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-right: 30px;
 }

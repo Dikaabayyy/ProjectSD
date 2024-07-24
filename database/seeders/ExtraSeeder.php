@@ -35,7 +35,7 @@ class ExtraSeeder extends Seeder
 
         foreach ($extras as $extra){
 
-            Extra::factory()->create([
+            Extra::create([
                 'name' => $extra['name'],
                 'desc' => $extra['desc'],
                 'slug' => $extra['slug']

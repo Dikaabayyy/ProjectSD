@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AboutSch;
+use App\Models\VisiMisi;
+use App\Models\GoalsSch;
+use App\Models\Teacher;
 
 class AdminController extends Controller
 {
@@ -11,7 +15,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.components.dashboard');
+        $about = AboutSch::get();
+        $visimisi = VisiMisi::get();
+        $goals = GoalsSch::get();
+        $teacher = Teacher::limit(15)->get();
+        return view('admin.components.dashboard', compact('about', 'visimisi', 'goals', 'teacher'));
     }
 
     /**

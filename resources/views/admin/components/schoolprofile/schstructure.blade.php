@@ -41,8 +41,8 @@
                           </textarea>
                         </div>
                     </div>
-                    <div class="">
-                        <button type="button" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+                    <div class="" id="options">
+                        <button type="button" class="btn btn-success mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
                     </div>
                 </div>
               </div><!-- End Bordered Tabs -->

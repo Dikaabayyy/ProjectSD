@@ -13,7 +13,7 @@ class GreetsSchSeeder extends Seeder
      */
     public function run(): void
     {
-        GreetsSch::factory()->create([
+        GreetsSch::create([
             'name' => 'greetssch',
             'greets' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed leo tortor. Maecenas rhoncus ac enim in fringilla. Mauris velit felis, imperdiet ut pretium et, finibus eget lectus. Vivamus quis elementum felis. Curabitur erat velit, semper sed ultricies id, bibendum ut metus. Morbi nec lectus a risus rutrum placerat sed ut ex. Nullam finibus nunc neque, nec ultricies nisi varius dictum. Integer nec facilisis orci. Nunc placerat turpis quam, eget dictum est volutpat sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 Suspendisse potenti. Cras vitae turpis sed mauris pulvinar tincidunt eget eu augue. Quisque facilisis lorem quis ullamcorper mollis. Pellentesque ac ornare augue. Maecenas auctor sagittis vehicula. Vivamus ultricies sed turpis sit amet finibus. Fusce facilisis diam eu mi suscipit, non consequat sapien rhoncus. Curabitur augue felis, tincidunt in risus ac, viverra posuere massa.

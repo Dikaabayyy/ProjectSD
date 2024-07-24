@@ -53,9 +53,9 @@
                 </div><!-- End Bordered Tabs -->
 
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a type="button" href="/adm-visi-misi" class="btn btn-secondary rounded-pill"><i class="bi bi-arrow-left-square"></i> Kembali</a>
+            <div class="card-footer" id="options">
+                <button type="submit" class="btn btn-success mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+                <a type="button" href="/adm-visi-misi" class="btn btn-secondary"><i class="bi bi-arrow-left-square"></i> Kembali</a>
             </div>
         </form>
 

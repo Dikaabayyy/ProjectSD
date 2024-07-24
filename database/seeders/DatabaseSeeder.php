@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Facility;
+use App\Models\TeachersData;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'username' => 'superadmin',
+            'name' => 'Super Admin',
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('@SuperAdmin1#22OE'),
+            'role' => Hash::make('SuperAdmin')
+        ]);
+
+        User::factory()->create([
+            'username' => 'admin',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('#Admin2@13#OZ'),
+            'role' => Hash::make('Admin')
         ]);
 
         $this->call(AboutSchSeeder::class);
@@ -26,5 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call(VisiMisiSeeder::class);
         $this->call(ExtraSeeder::class);
         $this->call(ActivitySeeder::class);
+        $this->call(FacilitySeeder::class);
+        $this->call(TeacherSeeder::class);
+        $this->call(NewsSeeder::class);
+        $this->call(AgendaSeeder::class);
     }
 }

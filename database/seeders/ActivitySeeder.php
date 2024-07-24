@@ -50,7 +50,7 @@ class ActivitySeeder extends Seeder
 
         foreach ($activitys as $activity){
 
-            Activity::factory()->create([
+            Activity::create([
                 'name' => $activity['name'],
                 'desc' => $activity['desc'],
                 'slug' => $activity['slug']

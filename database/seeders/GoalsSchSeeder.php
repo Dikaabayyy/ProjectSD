@@ -13,7 +13,7 @@ class GoalsSchSeeder extends Seeder
      */
     public function run(): void
     {
-        GoalsSch::factory()->create([
+        GoalsSch::create([
             'name' => 'goalssch',
             'goals' => '1.	Menguasai dasar-dasar ilmu pengetahuan dan teknologi serta meraih prestasi akademik dan non akademik
 2.	Terwujudnya peningkatan mutu keimanan dan ketaqwaan peserta didik melalui kegiatan keagamaan dan pembiasaan.

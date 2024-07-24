@@ -3,25 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher;
 
 class TeacherSchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function tcrdata()
+    public function index(Request $request)
     {
-        return view('admin.components.teachers.tcrdata');
-    }
+        $perPage = 5;
 
-    public function tcreditdata()
-    {
-        return view('admin.components.teachers.tcreditdata');
-    }
+        $currentPage = $request->input('page', 1);
 
-    public function tcradddata()
-    {
-        return view('admin.components.teachers.tcradddata');
+        $search = $request->input('search');
+
+        $offset = ($currentPage - 1) * $perPage;
+
+        $query = Teacher::query();
+
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $teacher = $query->offset($offset)->limit($perPage)->get();
+
+        $totalData = $query->count();
+
+        $totalPages = ceil($totalData / $perPage);
+
+        return view('admin.components.teachers.tcrdata', compact('teacher', 'currentPage', 'totalPages', 'totalData', 'search'));
     }
 
     /**
@@ -29,7 +40,7 @@ class TeacherSchController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.components.teachers.tcradddata');
     }
 
     /**
@@ -53,7 +64,7 @@ class TeacherSchController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.components.teachers.tcreditdata');
     }
 
     /**

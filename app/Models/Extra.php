@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Extra extends Model
 {
@@ -13,4 +14,5 @@ class Extra extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['name', 'img', 'desc', 'slug'];
+
 }

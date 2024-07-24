@@ -64,7 +64,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: rgb(140, 0, 255);
 }
 
 /*--------------------------------------------------------------
@@ -305,9 +305,11 @@ h6 {
 
 /* Breadcrumbs */
 .breadcrumb {
+  padding-left: 0px !important;
   font-size: 14px;
   font-family: "Nunito", sans-serif;
   color: #899bbd;
+  background-color: rgba(255, 255, 255, 0) !important;
   font-weight: 600;
 }
 
@@ -318,6 +320,7 @@ h6 {
 
 .breadcrumb a:hover {
   color: #51678f;
+  text-decoration: none;
 }
 
 .breadcrumb .breadcrumb-item::before {
@@ -364,6 +367,13 @@ h6 {
   }
 }
 
+@media (max-width: 1199px){
+    .logo{
+        padding-top: 13px !important;
+        padding-left : 0px !important;
+    }
+}
+
 .logo img {
   max-height: 26px;
   margin-right: 6px;
@@ -372,7 +382,7 @@ h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: rgb(140, 0, 255);
   font-family: "Nunito", sans-serif;
 }
 
@@ -390,68 +400,17 @@ h6 {
 .header .toggle-sidebar-btn {
   font-size: 32px;
   padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
-  color: #012970;
+  color: rgb(140, 0, 255);
+  border-radius: 10px;
 }
 
-.header .search-bar {
-  min-width: 360px;
-  padding: 0 20px;
-}
-
-@media (max-width: 1199px) {
-  .header .search-bar {
-    position: fixed;
-    top: 50px;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    box-shadow: 0px 0px 15px 0px rgba(1, 41, 112, 0.1);
-    background: white;
-    z-index: 9999;
-    transition: 0.3s;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .header .search-bar-show {
-    top: 60px;
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-.header .search-form {
-  width: 100%;
-}
-
-.header .search-form input {
-  border: 0;
-  font-size: 14px;
-  color: #012970;
-  border: 1px solid rgba(1, 41, 112, 0.2);
-  padding: 7px 38px 7px 8px;
-  border-radius: 3px;
-  transition: 0.3s;
-  width: 100%;
-}
-
-.header .search-form input:focus,
-.header .search-form input:hover {
-  outline: none;
-  box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
-  border: 1px solid rgba(1, 41, 112, 0.3);
-}
-
-.header .search-form button {
-  border: 0;
-  padding: 0;
-  margin-left: -30px;
-  background: none;
-}
-
-.header .search-form button i {
-  color: #012970;
+.header .toggle-sidebar-btn:hover{
+    color: whitesmoke;
+    background-color: rgba(140, 0, 255, 0.5);
+    border-radius: 10px;
+    transition: 0.5s;
 }
 
 /*--------------------------------------------------------------
@@ -474,8 +433,17 @@ h6 {
 }
 
 .header-nav .nav-profile {
-  color: #012970;
+  color: rgb(140, 0, 255);
+  margin-right: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 10px;
 }
+
+.header-nav .nav-profile:hover {
+    background-color: rgba(140, 0, 255, 0.5);
+    color: whitesmoke;
+  }
 
 .header-nav .nav-profile img {
   max-height: 36px;
@@ -484,81 +452,6 @@ h6 {
 .header-nav .nav-profile span {
   font-size: 14px;
   font-weight: 600;
-}
-
-.header-nav .badge-number {
-  position: absolute;
-  inset: -2px -5px auto auto;
-  font-weight: normal;
-  font-size: 12px;
-  padding: 3px 6px;
-}
-
-.header-nav .notifications {
-  inset: 8px -15px auto auto !important;
-}
-
-.header-nav .notifications .notification-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 10px;
-  transition: 0.3s;
-}
-
-.header-nav .notifications .notification-item i {
-  margin: 0 20px 0 10px;
-  font-size: 24px;
-}
-
-.header-nav .notifications .notification-item h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.header-nav .notifications .notification-item p {
-  font-size: 13px;
-  margin-bottom: 3px;
-  color: #919191;
-}
-
-.header-nav .notifications .notification-item:hover {
-  background-color: #f6f9ff;
-}
-
-.header-nav .messages {
-  inset: 8px -15px auto auto !important;
-}
-
-.header-nav .messages .message-item {
-  padding: 15px 10px;
-  transition: 0.3s;
-}
-
-.header-nav .messages .message-item a {
-  display: flex;
-}
-
-.header-nav .messages .message-item img {
-  margin: 0 20px 0 10px;
-  max-height: 40px;
-}
-
-.header-nav .messages .message-item h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #444444;
-}
-
-.header-nav .messages .message-item p {
-  font-size: 13px;
-  margin-bottom: 3px;
-  color: #919191;
-}
-
-.header-nav .messages .message-item:hover {
-  background-color: #f6f9ff;
 }
 
 .header-nav .profile {
@@ -571,7 +464,7 @@ h6 {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #444444;
+  color: rgb(140, 0, 255);
 }
 
 .header-nav .profile .dropdown-header span {
@@ -591,7 +484,9 @@ h6 {
 }
 
 .header-nav .profile .dropdown-item:hover {
-  background-color: #f6f9ff;
+  background-color: rgba(140, 0, 255, 0.5);
+  transition: 0.5s;
+  color: whitesmoke;
 }
 
 /*--------------------------------------------------------------
@@ -613,20 +508,11 @@ h6 {
   background-color: #fff;
 }
 
+
 @media (max-width: 1199px) {
   .sidebar {
     left: -300px;
   }
-}
-
-.sidebar::-webkit-scrollbar {
-  width: 5px;
-  height: 8px;
-  background-color: #fff;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #aab7cf;
 }
 
 @media (min-width: 1200px) {
@@ -674,9 +560,129 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #000000;
   font-weight: 600;
   margin: 10px 0 5px 15px;
+}
+
+#profilesch-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#profilesch-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#profilesch-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#profilesch-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#programs-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#programs-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#programs-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#programs-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#committee-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#committee-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#committee-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#committee-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#news-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#news-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#news-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#news-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#gallery-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#gallery-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#gallery-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#gallery-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#students-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#students-nav .nav-link span{
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+#students-nav .nav-link.collapsed span{
+    color: rgb(140, 0, 255);
+    transition: 0.2s;
+}
+
+#students-nav .nav-link.collapsed:hover span{
+    color: whitesmoke;
+    transition: 0.2s;
 }
 
 .sidebar-nav .nav-link {
@@ -684,35 +690,41 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: whitesmoke;
   transition: 0.3;
-  background: #f6f9ff;
+  background: rgb(140, 0, 255);
   padding: 10px 15px;
   border-radius: 4px;
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: whitesmoke;
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
+  color: rgb(140, 0, 255);
   background: #fff;
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-  color: #899bbd;
+  color: rgb(140, 0, 255);
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
-  background: #f6f9ff;
+  color: whitesmoke;
+  background: rgba(140, 0, 255, 0.5);
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: whitesmoke;
+  transition: 0.2s;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -735,7 +747,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: rgb(140, 0, 255);
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -821,8 +833,8 @@ h6 {
 }
 
 .dashboard .sales-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
+  color: #fefefe;
+  background: rgba(140, 0, 255, 0.5);
 }
 
 .dashboard .revenue-card .card-icon {
@@ -831,8 +843,8 @@ h6 {
 }
 
 .dashboard .customers-card .card-icon {
-  color: #ff771d;
-  background: #ffecdf;
+  color: #fefefe;
+  background: rgb(140, 0, 255);
 }
 
 /* Activity */
@@ -1173,44 +1185,6 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Error 404
---------------------------------------------------------------*/
-.error-404 {
-  padding: 30px;
-}
-
-.error-404 h1 {
-  font-size: 180px;
-  font-weight: 700;
-  color: #4154f1;
-  margin-bottom: 0;
-  line-height: 150px;
-}
-
-.error-404 h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #012970;
-  margin-bottom: 30px;
-}
-
-.error-404 .btn {
-  background: #51678f;
-  color: #fff;
-  padding: 8px 30px;
-}
-
-.error-404 .btn:hover {
-  background: #3e4f6f;
-}
-
-@media (min-width: 992px) {
-  .error-404 img {
-    max-width: 50%;
-  }
-}
-
-/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .footer {
@@ -1222,12 +1196,12 @@ h6 {
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: rgb(140, 0, 255);
 }
 
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: rgb(140, 0, 255);
 }

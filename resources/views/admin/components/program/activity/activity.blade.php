@@ -21,9 +21,9 @@
                   <div class="col">
                       <h5 class="card-title">Kegiatan Sekolah SD YPKP 2 SENTANI</h5>
                   </div>
-                  <div class="col" style="text-align: end; padding-top: 20px;">
-                      <a type="button" href="/adm-tambah-data-kegiatan" class="btn btn-primary rounded-pill"><i class="bi bi-plus-circle"></i> Tambah Data</a>
-                      <button type="button" class="btn btn-success rounded-pill"><i class="bi bi-download"></i> Unduh Data</button>
+                  <div class="col" id="ops">
+                      <a type="button" href="/adm-tambah-data-kegiatan" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data</a>
+                      <button type="button" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</button>
                   </div>
 
 
@@ -42,6 +42,29 @@
               <tbody>
 
                 @foreach ($activity as $index => $a)
+                     <!-- Delete Extracurricular Modal -->
+                     <div class="modal fade" id="delextraModal-{{ $a->slug }}" role="dialog" tabindex="-1" aria-labelledby="delextraModalLabel-{{ $a->slug }}" aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog modal-dialog-centered" id="deletemodal" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="delextraModalLabel-{{ $a->slug }}">Perhatian!!!</h1>
+                                </div>
+
+                                <div class="modal-body">
+                                    Apakah anda yakin ingin menghapus data ini?
+                                </div>
+
+                                <div class="modal-footer">
+                                    <form action="/adm-hapus-data-kegiatan-{{ $a->slug }}" method="POST">
+                                        @csrf
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-danger">Hapus Data</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <tr>
                         <th scope="row" class="nb">
@@ -56,9 +79,9 @@
                         <td class="dsc">
                             {{ $a->desc }}
                         </td>
-                        <td class="opt">
-                            <a type="buton" href="/adm-edit-data-kegiatan-{{ $a->slug }}" class="btn btn-warning rounded-pill mb-3"><i class="bi bi-pencil-square"></i> Edit</a><br>
-                            <button type="button" class="btn btn-danger rounded-pill"><i class="bi bi-trash"></i> Hapus</button>
+                        <td class="opt" id="options">
+                            <a type="buton" href="/adm-edit-data-kegiatan-{{ $a->slug }}" class="btn btn-warning mb-3"><i class="bi bi-pencil-square"></i> Ubah</a><br>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delextraModal-{{ $a->slug }}"><i class="bi bi-trash"></i> Hapus</button>
                         </td>
                     </tr>
 

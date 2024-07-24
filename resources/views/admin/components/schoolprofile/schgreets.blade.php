@@ -48,8 +48,8 @@
                                     <textarea class="form-control" rows="12" style="resize: none" name="greets">{{ $h->greets }}</textarea>
                                 </div>
                             </div>
-                            <div class="">
-                                <button type="submit" class="btn btn-success rounded-pill mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
+                            <div class="" id="options">
+                                <button type="submit" class="btn btn-success mr-3"><i class="bi bi-save"></i> Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>

@@ -46,7 +46,7 @@
       </li><!-- End School Profile Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('extra', 'addextra', 'editextra', 'activity', 'editactivity') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#programs-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('extra', 'addextra', 'editextra', 'activity', 'addactivity', 'editactivity', 'facility', 'addfacility', 'editfacility') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#programs-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Program Sekolah</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="programs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="/adm-fasilitas-sekolah">
+            <a href="/adm-fasilitas-sekolah" class="{{ Route::is('facility') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Fasilitas Sekolah</span>
             </a>
           </li>
@@ -69,17 +69,17 @@
       </li><!-- End School Prgrams Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('committee') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#committee-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('committee', 'actcommittee') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#committee-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-archive"></i><span>Komite</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="committee-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-struktur-komite">
+            <a href="/adm-struktur-komite" class="{{ Route::is('committee') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Struktur Komite</span>
             </a>
           </li>
           <li>
-            <a href="/adm-kegiatan-komite">
+            <a href="/adm-kegiatan-komite" class="{{ Route::is('actcommittee') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Kegiatan Komite</span>
             </a>
           </li>
@@ -87,22 +87,17 @@
       </li><!-- End School Committee Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('newsannouncements') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#news-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('news', 'addnews', 'editnews', 'agenda', 'addagenda', 'editagenda') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#news-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Berita</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="news-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-berita">
-              <i class="bi bi-circle-fill"></i><span>Berita Terbaru</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-pengumuman">
+            <a href="/adm-berita" class="{{ Route::is('news', 'addnews', 'editnews') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Pengumuman</span>
             </a>
           </li>
           <li>
-            <a href="/adm-agenda-sekolah">
+            <a href="/adm-agenda-sekolah" class="{{ Route::is('agenda', 'addagenda', 'editagenda') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Agenda Sekolah</span>
             </a>
           </li>
@@ -110,17 +105,17 @@
       </li><!-- End News & Announcements Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('gallery') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('photo', 'video') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-images"></i><span>Galeri</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="gallery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-foto">
+            <a href="/adm-foto" class="{{ Route::is('photo') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Foto</span>
             </a>
           </li>
           <li>
-            <a href="/adm-video">
+            <a href="/adm-video" class="{{ Route::is('video') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Video</span>
             </a>
           </li>
@@ -131,7 +126,13 @@
       <li class="nav-heading">Admin</li>
 
       <li class="nav-item">
-        <a class="{{ Route::is('tcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
+        <a class="{{ Route::is('accteach', 'addacc') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-akun-guru">
+            <i class="bi bi-person-badge"></i><span>Data Akun Guru</span>
+        </a>
+      </li><!-- End Teacher's Data Nav -->
+
+      <li class="nav-item">
+        <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
             <i class="bi bi-person-vcard"></i><span>Data Guru</span>
         </a>
       </li><!-- End Teacher's Data Nav -->

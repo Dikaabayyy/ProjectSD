@@ -17,9 +17,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -30,7 +32,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role'
     ];
+
+    public function generateUsername($name){
+        $number = mt_rand(1000, 9999);
+        $username = "TCR02".$number;
+        if(User::where('username', '=', $username)->exists()){
+            return $this->generateUserName($name);
+        }
+        return $username;
+    }
 
     /**
      * Get the attributes that should be cast.

@@ -48,8 +48,8 @@
               </div><!-- End Bordered Tabs -->
 
             </div>
-            <div class="card-footer">
-                <a type="button" href="/adm-edit-visi-misi" class="btn btn-warning rounded-pill"><i class="bi bi-pencil-square"></i> Edit Visi & Misi</a>
+            <div class="card-footer" id="options">
+                <a type="button" href="/adm-edit-visi-misi" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Edit Visi & Misi</a>
             </div>
 
           </div>

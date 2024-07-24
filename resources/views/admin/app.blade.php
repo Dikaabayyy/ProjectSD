@@ -10,9 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="stylesheet" href="{{ asset('css/admin/asset/img/favicon.png')}}">
   <link href="{{ asset('css/admin/asset/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('css/admin/asset/img/apple-touch-icon.png')}}img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -23,9 +21,6 @@
   <link href="{{ asset('css/admin/asset/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
   <link href="{{ asset('css/admin/asset/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
   <link href="{{ asset('css/admin/asset/vendor/quill/quill.snow.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/admin/asset/img/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/admin/asset/img/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/admin/asset/img/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('css/admin/asset/css/style.css')}}" rel="stylesheet">
@@ -37,7 +32,7 @@
 
 </head>
 
-<body>
+<body id="body">
     @if (session('success'))
         <!-- Modal -->
         <div id="successModal" class="modal">
@@ -60,25 +55,15 @@
 
   @include('admin.layouts.footer')
 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('css/admin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/chart.js/chart.umd.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/echarts/echarts.min.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/quill/quill.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/tinymce/tinymce.min.js')}}"></script>
-  <script src="{{ asset('css/admin/assets/vendor/php-email-form/validate.js')}}"></script>
-
   <!-- Template Main JS File -->
-  <script src="{{ asset('css/admin/assets/js/main.js')}}"></script>
+  <script src="{{ asset('css/admin/main.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script>
+
     document.addEventListener('DOMContentLoaded', (event) => {
         @if (session('success'))
             var modal = document.getElementById("successModal");
@@ -100,6 +85,7 @@
             }
         @endif
     });
+
   </script>
 </body>
 </html>
