@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Facility;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class FacilityController extends Controller
 {

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Performance;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PerformanceController extends Controller
 {
