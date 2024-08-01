@@ -8,7 +8,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="/adm-extrakurikuler">Galeri Foto</a></li>
+          <li class="breadcrumb-item"><a href="/adm-galeri-foto">Galeri Foto</a></li>
           <li class="breadcrumb-item active">Ubah Data Galeri Foto</li>
         </ol>
       </nav>

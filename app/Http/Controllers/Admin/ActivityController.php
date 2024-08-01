@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Activity;
+use PDF;
 
 class ActivityController extends Controller
 {
@@ -32,18 +33,32 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $validateData = $request->validate([
             'name' => 'required',
             'desc' => 'required',
         ]);
 
+
         if (empty($validateData['slug'])) {
             $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
         }
 
-        Activity::create($validateData);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('images/activity/'.$validateData['slug'].'/', $name, 'public');
 
-        return redirect()->route('activity')->with('success', 'Data Telah ditambahkan!');
+            $validateData['img_name'] = $path;
+            Activity::create($validateData);
+
+            return redirect()->route('activity')->with('success', 'Data Telah ditambahkan!');
+        }
+
+        return back()->with('error', 'Gagal mengupload gambar.');
     }
 
     /**
@@ -73,14 +88,39 @@ class ActivityController extends Controller
         $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
-        $activity->update($request->only('name', 'desc', 'slug'));
+        $imagePath = $activity['img_name'];
 
-        $activity = Activity::where('slug', $slug)->firstOrFail();
+        if ($request['image']) {
 
-        return redirect()->route('activity')->with('success', 'Data Telah di Update!');
+            if (Storage::disk('public')->exists($imagePath)) {
+
+                $path = 'public/images/activity/'.$activity['slug'];
+
+                Storage::deleteDirectory($path);
+
+                $image = $request->file('image');
+                $name = time() . '.' . $image->getClientOriginalExtension();
+                $pathImage = $image->storeAs('images/activity/'.$activity['slug'].'/', $name, 'public');
+
+                $activity['img_name'] = $pathImage;
+                $activity->update($request->only('name','img_name', 'desc'));
+
+                $activity = Activity::where('slug', $slug)->firstOrFail();
+
+                return redirect()->route('activity')->with('success', 'Data Telah diubah!');
+            }
+        } else {
+            $activity->update($request->only('name', 'desc'));
+
+            $activity = Activity::where('slug', $slug)->firstOrFail();
+
+            return redirect()->route('activity')->with('success', 'Data Telah diubah!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
     }
 
     /**
@@ -90,8 +130,32 @@ class ActivityController extends Controller
     {
         $activity = Activity::where('slug', $slug)->firstOrFail();
 
-        $activity->delete();
+        $imagePath = 'public/'.$activity['img_name'];
 
-        return redirect()->route('activity')->with('success', 'Data Telah dihapus!');
+        if (Storage::exists($imagePath)) {
+
+            $path = 'public/images/activity/'.$activity['slug'];
+
+            Storage::deleteDirectory($path);
+
+            Storage::delete($imagePath);
+
+            $activity->delete();
+
+            return redirect()->route('activity')->with('success', 'Data Telah dihapus!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
+    }
+
+    public function downloadPDF()
+    {
+        $data = Activity::all(); // Ambil semua data dari tabel yang diinginkan
+
+        $pdf = PDF::loadView('admin.components.program.activity.pdfview', compact('data'));
+
+        $fileName = 'Data Kegiatan SD YPKP 2 Sentani'.'.pdf';
+
+        return $pdf->download($fileName);
     }
 }

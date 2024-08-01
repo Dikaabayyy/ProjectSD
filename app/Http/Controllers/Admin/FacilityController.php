@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Facility;
+use PDF;
 
 class FacilityController extends Controller
 {
@@ -32,18 +33,32 @@ class FacilityController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $validateData = $request->validate([
             'name' => 'required',
             'desc' => 'required',
         ]);
 
+
         if (empty($validateData['slug'])) {
             $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
         }
 
-        Facility::create($validateData);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('images/facility/'.$validateData['slug'].'/', $name, 'public');
 
-        return redirect()->route('facility')->with('success', 'Data Telah ditambahkan!');
+            $validateData['img_name'] = $path;
+            Facility::create($validateData);
+
+            return redirect()->route('facility')->with('success', 'Data Telah ditambahkan!');
+        }
+
+        return back()->with('error', 'Gagal mengupload gambar.');
     }
 
     /**
@@ -73,14 +88,39 @@ class FacilityController extends Controller
         $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
-        $facility->update($request->only('name', 'desc', 'slug'));
+        $imagePath = $facility['img_name'];
 
-        $facility = Facility::where('slug', $slug)->firstOrFail();
+        if ($request['image']) {
 
-        return redirect()->route('facility')->with('success', 'Data Telah di Update!');
+            if (Storage::disk('public')->exists($imagePath)) {
+
+                $path = 'public/images/facility/'.$facility['slug'];
+
+                Storage::deleteDirectory($path);
+
+                $image = $request->file('image');
+                $name = time() . '.' . $image->getClientOriginalExtension();
+                $pathImage = $image->storeAs('images/facility/'.$facility['slug'].'/', $name, 'public');
+
+                $facility['img_name'] = $pathImage;
+                $facility->update($request->only('name','img_name', 'desc'));
+
+                $facility = Facility::where('slug', $slug)->firstOrFail();
+
+                return redirect()->route('facility')->with('success', 'Data Telah diubah!');
+            }
+        } else {
+            $facility->update($request->only('name', 'desc'));
+
+            $facility = Facility::where('slug', $slug)->firstOrFail();
+
+            return redirect()->route('facility')->with('success', 'Data Telah diubah!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
     }
 
     /**
@@ -90,8 +130,32 @@ class FacilityController extends Controller
     {
         $facility = Facility::where('slug', $slug)->firstOrFail();
 
-        $facility->delete();
+        $imagePath = 'public/'.$facility['img_name'];
 
-        return redirect()->route('facility')->with('success', 'Data Telah dihapus!');
+        if (Storage::exists($imagePath)) {
+
+            $path = 'public/images/facility/'.$facility['slug'];
+
+            Storage::deleteDirectory($path);
+
+            Storage::delete($imagePath);
+
+            $facility->delete();
+
+            return redirect()->route('facility')->with('success', 'Data Telah dihapus!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
+    }
+
+    public function downloadPDF()
+    {
+        $data = Facility::all(); // Ambil semua data dari tabel yang diinginkan
+
+        $pdf = PDF::loadView('admin.components.program.facility.pdfview', compact('data'));
+
+        $fileName = 'Data Fasilitas SD YPKP 2 Sentani'.'.pdf';
+
+        return $pdf->download($fileName);
     }
 }

@@ -13,6 +13,6 @@ class Facility extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['name', 'img', 'desc', 'slug'];
+    protected $fillable = ['name', 'img_name', 'desc', 'slug'];
 }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Announ;
 use App\Models\Facility;
 use App\Models\TeachersData;
 use App\Models\User;
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('@SuperAdmin1#22OE'),
-            'role' => Hash::make('SuperAdmin')
+            'role' => 'SuperAdmin'
         ]);
 
         User::factory()->create([
@@ -30,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('#Admin2@13#OZ'),
-            'role' => Hash::make('Admin')
+            'role' => 'Admin'
         ]);
 
         $this->call(AboutSchSeeder::class);
@@ -44,5 +45,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NewsSeeder::class);
         $this->call(AgendaSeeder::class);
         $this->call(GalleryPhotoSeeder::class);
+        $this->call(PerformaceSeeder::class);
+        $this->call(AnnounSeeder::class);
     }
 }

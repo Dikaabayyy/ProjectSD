@@ -21,7 +21,7 @@
 
                 <div class="card-body">
                     <div class="title-db">
-                        <span>"Datang Belajar, Pulang Terpelajar"</span>
+                        <span>"Kami Datang Belajar, Kami Pulang Terpelajar"</span>
                     </div>
 
                     <div id="schools-profile">
@@ -269,7 +269,7 @@
                             <tr>
 
                                 <td class="ph">
-                                    <img src="{{ asset('css/admin/asset/img/'.$t->img_name) }}" alt="" class="img-tcr">
+                                    <img src="{{ asset('storage/'.$t->img_name) }}" alt="" class="img-tcr">
                                 </td>
                                 <td>
                                     {{ $t->name }}

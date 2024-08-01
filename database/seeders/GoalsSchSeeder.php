@@ -14,7 +14,7 @@ class GoalsSchSeeder extends Seeder
     public function run(): void
     {
         GoalsSch::create([
-            'name' => 'goalssch',
+            'name' => 'Tujuan SD YPKP 2 Sentani',
             'goals' => '1.	Menguasai dasar-dasar ilmu pengetahuan dan teknologi serta meraih prestasi akademik dan non akademik
 2.	Terwujudnya peningkatan mutu keimanan dan ketaqwaan peserta didik melalui kegiatan keagamaan dan pembiasaan.
 3.	Terbentuknya sikap sopan, santun, yang dijiwai nilai-nilai karakter bangsa dalam kehidupan sehari-hari di sekolah Dan di lingkungan sekitar

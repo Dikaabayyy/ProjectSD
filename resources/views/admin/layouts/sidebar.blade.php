@@ -23,7 +23,7 @@
             </a>
           </li>
           <li>
-            <a href="/adm-visi-misi" class="{{ Route::is('visimisi') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-visi-misi" class="{{ Route::is('visimisi', 'editvisimisi') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Visi & Misi</span>
             </a>
           </li>
@@ -51,24 +51,42 @@
         </a>
         <ul id="programs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-extrakurikuler" class="{{ Route::is('extra') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-extrakurikuler" class="{{ Route::is('extra', 'addextra', 'editextra') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Ekstrakurikuler</span>
             </a>
           </li>
           <li>
-            <a href="/adm-kegiatan-sekolah" class="{{ Route::is('activity') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-kegiatan-sekolah" class="{{ Route::is('activity', 'addactivity', 'editactivity' ) ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Kegiatan Sekolah</span>
             </a>
           </li>
           <li>
-            <a href="/adm-fasilitas-sekolah" class="{{ Route::is('facility') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-fasilitas-sekolah" class="{{ Route::is('facility', 'addfacility', 'editfacility') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Fasilitas Sekolah</span>
             </a>
           </li>
         </ul>
-      </li><!-- End School Prgrams Nav -->
+      </li><!-- End School Programs Nav -->
 
       <li class="nav-item">
+        <a class="{{ Route::is('performance', 'addperformance', 'editperformance') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#performance-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-trophy"></i><span>Prestasi Sekolah</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="performance-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/adm-prestasi-sekolah" class="{{ Route::is('performance', 'editperformance') ? 'nav-link' : 'nav-link collapsed' }}">
+              <i class="bi bi-circle-fill"></i><span>Data Prestasi Sekolah</span>
+            </a>
+          </li>
+          <li>
+            <a href="/adm-tambah-prestasi-sekolah" class="{{ Route::is('addperformance') ? 'nav-link' : 'nav-link collapsed' }}">
+              <i class="bi bi-circle-fill"></i><span>Tambah Data Prestasi</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End School Performance Nav -->
+
+      {{-- <li class="nav-item">
         <a class="{{ Route::is('committee', 'actcommittee') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#committee-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-archive"></i><span>Komite</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -84,15 +102,20 @@
             </a>
           </li>
         </ul>
-      </li><!-- End School Committee Nav -->
+      </li><!-- End School Committee Nav --> --}}
 
       <li class="nav-item">
-        <a class="{{ Route::is('news', 'addnews', 'editnews', 'agenda', 'addagenda', 'editagenda') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#news-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Berita</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="{{ Route::is('news', 'addnews', 'editnews', 'announs', 'addannouns', 'editannouns', 'agenda', 'addagenda', 'editagenda') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#news-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Informasi</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="news-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-berita" class="{{ Route::is('news', 'addnews', 'editnews') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-berita-sekolah" class="{{ Route::is('news', 'addnews', 'editnews') ? 'nav-link' : 'nav-link collapsed' }}">
+              <i class="bi bi-circle-fill"></i><span>Berita</span>
+            </a>
+          </li>
+          <li>
+            <a href="/adm-pengumuman-sekolah" class="{{ Route::is('announs', 'addannouns', 'editannouns') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Pengumuman</span>
             </a>
           </li>
@@ -102,7 +125,7 @@
             </a>
           </li>
         </ul>
-      </li><!-- End News & Announcements Nav -->
+      </li><!-- End Information Nav -->
 
       <li class="nav-item">
         <a class="{{ Route::is('photo', 'addphoto', 'video') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
@@ -125,17 +148,36 @@
 
       <li class="nav-heading">Admin</li>
 
+      @auth
+        @if (Auth::user()->role == 'SuperAdmin')
+
       <li class="nav-item">
         <a class="{{ Route::is('accteach', 'addacc') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-akun-guru">
-            <i class="bi bi-person-badge"></i><span>Data Akun Guru</span>
+            <i class="bi bi-person-badge"></i><span>Data Akun</span>
         </a>
       </li><!-- End Teacher's Data Nav -->
 
-      <li class="nav-item">
-        <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
-            <i class="bi bi-person-vcard"></i><span>Data Guru</span>
-        </a>
-      </li><!-- End Teacher's Data Nav -->
+        @endif
+      @endauth
+
+      @auth
+          @if (Auth::user()->role == 'SuperAdmin')
+            <li class="nav-item">
+                <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
+                    <i class="bi bi-person-vcard"></i><span>Data Guru</span>
+                </a>
+            </li><!-- End Teacher's Data Nav -->
+            @elseif (Auth::user()->role == 'Admin')
+                <li class="nav-item">
+                    <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
+                        <i class="bi bi-person-vcard"></i><span>Data Guru</span>
+                    </a>
+                </li><!-- End Teacher's Data Nav -->
+            @endif
+    @endauth
+
+
+      <li class="nav-heading">Guru</li>
 
       <li class="nav-item">
         <a class="{{ Route::is('stddata', 'stddata1', 'stddata2', 'stddata3', 'stddata4', 'stddata5', 'stddata6') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#students-nav" data-bs-toggle="collapse" href="#">
@@ -186,17 +228,17 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('accountset') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-pengaturan-akun">
+        <a class="{{ Route::is('editprofile') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-pengaturan-akun">
           <i class="bi bi-gear"></i>
           <span>Pengaturan Akun</span>
         </a>
       </li><!-- End Settings Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/adm-logout">
+        <button class="nav-link collapsed" data-bs-toggle="modal" data-bs-target="#logOut">
           <i class="bi bi-box-arrow-right"></i>
           <span>Keluar</span>
-        </a>
+        </button>
       </li><!-- End Logout Page Nav -->
     </ul>
 

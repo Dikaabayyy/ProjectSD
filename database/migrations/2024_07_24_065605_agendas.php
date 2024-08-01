@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('desc');
-            $table->date('agenda_start');
-            $table->date('agenda_end');
+            $table->string('location');
+            $table->timestamp('agenda_start')->default('2024-01-01 00:00:00');
+            $table->timestamp('agenda_end')->default('2024-01-01 00:00:00');
             $table->string('slug');
             $table->rememberToken();
             $table->timestamps();

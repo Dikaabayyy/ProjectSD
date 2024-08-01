@@ -420,3 +420,44 @@
     text-align: end;
     padding: 12px;
 }
+
+
+#logout-modal .btn-secondary{
+    background-color: #888;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#logout-modal .btn-secondary:hover{
+    background-color: white;
+    border: 1px solid #888;
+    color: #888;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#logout-modal .btn-danger{
+    background-color: red;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#logout-modal .btn-danger:hover{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#profile-card th{
+    width: 300px;
+    padding-left: 0px;
+    font-size: large;
+}
+
+#profile-card td{
+    padding-left: 0px;
+}

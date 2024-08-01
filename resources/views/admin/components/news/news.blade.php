@@ -23,7 +23,7 @@
                   </div>
                   <div class="col" id="ops">
                       <a type="button" href="/adm-tambah-data-berita" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data</a>
-                      <button type="button" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</button>
+                      <a type="button" href="/adm-berita-download-pdf" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</a>
                   </div>
               </div>
             <!-- Table with stripped rows -->
@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <form action="/adm-hapus-data-news-{{ $n->slug }}" method="POST">
+                                    <form action="/adm-hapus-data-berita-{{ $n->slug }}" method="POST">
                                         @csrf
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                                         <button type="submit" class="btn btn-danger">Hapus Data</button>

@@ -8,7 +8,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="/adm-extrakurikuler">Berita</a></li>
+          <li class="breadcrumb-item"><a href="/adm-berita-sekolah">Berita</a></li>
           <li class="breadcrumb-item active">Ubah Data Berita</li>
         </ol>
       </nav>
@@ -54,7 +54,7 @@
                                 <button type="submit" class="btn btn-success" style="margin-right: 15px"><i class="bi bi-save"></i> Simpan</button>
 
                     </form><!-- End Profile Edit Form -->
-                        <a type="button" href="/adm-berita" class="btn btn-secondary"><i class="bi bi-arrow-left-square"></i> Kembali</a>
+                        <a type="button" href="/adm-berita-sekolah" class="btn btn-secondary"><i class="bi bi-arrow-left-square"></i> Kembali</a>
                 </div>
 
               </div>

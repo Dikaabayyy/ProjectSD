@@ -8,7 +8,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="/adm-extrakurikuler">Fasilitas Sekolah</a></li>
+          <li class="breadcrumb-item"><a href="/adm-fasilitas-sekolah">Fasilitas Sekolah</a></li>
           <li class="breadcrumb-item active">Tambah Data Fasilitas Sekolah</li>
         </ol>
       </nav>
@@ -23,16 +23,13 @@
                     <form action="/adm-simpan-data-fasilitas" enctype="multipart/form-data" method="POST">
                         @csrf
 
-                      <div class="row mb-3">
-                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto Fasilitas</label>
-                        <div class="col-md-8 col-lg-9">
-                          <img src="{{ asset('css/admin/asset/img/profile-img.jpg') }}" alt="Profile">
-                          <div class="pt-2" id="ops" style="text-align: start;">
-                            <a href="#" class="btn btn-primary btn-sm" style="margin-right: 10px" title="Upload new profile image"><i class="bi bi-upload"></i> Upload Foto</a>
-                            <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i> Hapus Foto</a>
+                        <div class="row mb-3">
+                            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Fasilitas</label>
+                            <div class="col-md-8 col-lg-9">
+                                <img id="preview" class="preview prev-news" src="#" alt="Pratinjau Gambar" style="display: none;">
+                                <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
                       <div class="row mb-3">
                         <label for="name" class="col-md-4 col-lg-3 col-form-label">Nama Fasilitas</label>

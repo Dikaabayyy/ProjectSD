@@ -16,7 +16,6 @@
 <section class="section Galeri Foto">
     <div id="ops" class="pt-0 pb-4">
         <a type="button" href="/adm-tambah-data-galeri-foto" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data</a>
-        <button type="button" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</button>
     </div>
     <div class="galery-photo">
 

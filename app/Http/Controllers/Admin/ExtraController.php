@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Extra;
+use PDF;
 
 class ExtraController extends Controller
 {
@@ -32,18 +33,32 @@ class ExtraController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $validateData = $request->validate([
             'name' => 'required',
             'desc' => 'required',
         ]);
 
+
         if (empty($validateData['slug'])) {
             $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
         }
 
-        Extra::create($validateData);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('images/extra/'.$validateData['slug'].'/', $name, 'public');
 
-        return redirect()->route('extra')->with('success', 'Data Telah ditambahkan!');
+            $validateData['img_name'] = $path;
+            Extra::create($validateData);
+
+            return redirect()->route('extra')->with('success', 'Data Telah ditambahkan!');
+        }
+
+        return back()->with('error', 'Gagal mengupload gambar.');
     }
 
     /**
@@ -74,14 +89,39 @@ class ExtraController extends Controller
         $request->validate([
             'name' => 'required',
             'desc' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
-        $extra->update($request->only('name', 'desc', 'slug'));
+        $imagePath = $extra['img_name'];
 
-        $extra = Extra::where('slug', $slug)->firstOrFail();
+        if ($request['image']) {
 
-        return redirect()->route('extra')->with('success', 'Data Telah di Update!');
+            if (Storage::disk('public')->exists($imagePath)) {
+
+                $path = 'public/images/extra/'.$extra['slug'];
+
+                Storage::deleteDirectory($path);
+
+                $image = $request->file('image');
+                $name = time() . '.' . $image->getClientOriginalExtension();
+                $pathImage = $image->storeAs('images/extra/'.$extra['slug'].'/', $name, 'public');
+
+                $extra['img_name'] = $pathImage;
+                $extra->update($request->only('name','img_name', 'desc'));
+
+                $extra = Extra::where('slug', $slug)->firstOrFail();
+
+                return redirect()->route('extra')->with('success', 'Data Telah diubah!');
+            }
+        } else {
+            $extra->update($request->only('name', 'desc'));
+
+            $extra = Extra::where('slug', $slug)->firstOrFail();
+
+            return redirect()->route('extra')->with('success', 'Data Telah diubah!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
     }
 
     /**
@@ -91,8 +131,32 @@ class ExtraController extends Controller
     {
         $extra = Extra::where('slug', $slug)->firstOrFail();
 
-        $extra->delete();
+        $imagePath = 'public/'.$extra['img_name'];
 
-        return redirect()->route('extra')->with('success', 'Data Telah dihapus!');
+        if (Storage::exists($imagePath)) {
+
+            $path = 'public/images/extra/'.$extra['slug'];
+
+            Storage::deleteDirectory($path);
+
+            Storage::delete($imagePath);
+
+            $extra->delete();
+
+            return redirect()->route('extra')->with('success', 'Data Telah dihapus!');
+        }
+
+        return back()->with('error', 'Gambar tidak ditemukan.');
+    }
+
+    public function downloadPDF()
+    {
+        $data = Extra::all(); // Ambil semua data dari tabel yang diinginkan
+
+        $pdf = PDF::loadView('admin.components.program.extra.pdfview', compact('data'));
+
+        $fileName = 'Data Ekstrakurikuler SD YPKP 2 Sentani'.'.pdf';
+
+        return $pdf->download($fileName);
     }
 }

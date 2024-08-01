@@ -15,19 +15,19 @@
 
           <a class="nav-link nav-profile d-flex align-items-center" href="#" data-bs-toggle="dropdown">
             <img src="{{ asset('css/admin/asset/img/profile-img.png')}}" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>{{ Auth::user()->name }}</h6>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="/adm-profile">
                 <i class="bi bi-person"></i>
                 <span>Profil Saya</span>
               </a>
@@ -37,7 +37,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="/adm-pengaturan-akun">
                 <i class="bi bi-gear"></i>
                 <span>Pengaturan Akun</span>
               </a>
@@ -47,7 +47,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/adm-update-profile-{{ Auth::user()->username }}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Keluar</span>
               </a>

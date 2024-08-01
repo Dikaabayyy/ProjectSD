@@ -1,17 +1,122 @@
-.card-login{
-    text-align: center;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    margin-top: 150px;
-    background-color: white;
+html, body{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top right, rgb(0, 140, 255) , rgb(0, 255, 150));
 }
 
-.login-body {
-    background-color: #f7f7f7;
+#login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-body .grid-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .login-img{
-    margin-top: 50px;
-    height: 500px;
+    width: 500px;
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+#login-card{
+    width: 450px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#login-card .card-title{
+    text-align: center;
+    font-size: xx-large;
+    color: rgb(0, 140, 255);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#login-card .und-title{
+    font-size: medium;
+    color: #888;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#login-card .form-login{
+    display: flex;
+    flex-direction: column;
+}
+
+#login-card .form-label{
+    color: rgb(0, 140, 255);
+    font-size: large;
+}
+
+#login-card .form-input{
+    margin-bottom: 20px;
+    font-size: large;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.315);
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="text"]:focus , input[type="password"]:focus{
+    outline: none;
+}
+
+.btn-submit{
+    text-align: center;
+    margin: 10px;
+}
+
+.btn-login{
+    background-color: rgb(0, 140, 255);
+    color: white;
+    font-size: large;
+    padding: 5px 12px 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 140, 255);
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 140, 255);
+    font-size: large;
+    padding: 5px 12px 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 140, 255);
+    transition: 0.3s;
+}
+
+#modal-footer .btn-danger{
+    background-color: red;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#modal-footer .btn-danger:hover{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#modal-footer .btn-secondary{
+    background-color: #888;
+    color: whitesmoke;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+#modal-footer .btn-secondary:hover{
+    background-color: white;
+    border: 1px solid #888;
+    color: #888;
+    transition: 0.5s;
+    border-radius: 10px;
 }

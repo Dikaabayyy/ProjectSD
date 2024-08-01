@@ -3,12 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 /*   User Controller*/
+use App\Http\Controllers\User\HomeController;
+
+use App\Http\Controllers\User\InfoController;
 
 /*   Auth Controller   */
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*   Admin Controller   */
-use App\Http\Controllers\AboutSchController;
+use App\Http\Controllers\Admin\AboutSchController;
 use App\Http\Controllers\Admin\ExtraController;
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\NewsController;
@@ -16,187 +19,327 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\FacilityController;
+use App\Http\Controllers\Admin\PerformanceController;
 use App\Http\Controllers\Admin\TeacherSchController;
 use App\Http\Controllers\Admin\StudentSchController;
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\Admin\AnnounController;
 use App\Http\Controllers\Auth\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-
-
-
-
 /****************************************************************/
 /*                                                              */
-/*                        Admin Route                           */
+/*                        User Route                            */
 /*                                                              */
 /****************************************************************/
-
 
 /*  Dashboard  */
-Route::get('/adm-dashboard', [AdminController::class, 'index'])->name('dashboard');
 
+Route::get('/beranda', [HomeController::class, 'index'])->name('welcome');
 
-/*  About School  */
-Route::get('/adm-tentang-sekolah', [AboutSchController::class, 'schabout'])->name('aboutsch');
 
-Route::post('/adm-update-tentang-sekolah-{slug}', [AboutSchController::class, 'schabout_update']);
+/*  Profil Tentang Sekolah  */
 
+Route::get('/tentang-kami', [HomeController::class, 'tentang'])->name('tentang');
 
-/*  Visi&Misi School  */
-Route::get('/adm-visi-misi', [AboutSchController::class, 'visimisi'])->name('visimisi');
+Route::get('/visi-misi-sekolah', [HomeController::class, 'visimisi'])->name('visimisi');
 
-Route::get('/adm-edit-visi-misi', [AboutSchController::class, 'editvisimisi'])->name('editvisimisi');
+Route::get('/sambutan-kepala-sekolah', [HomeController::class, 'sambutan'])->name('sambutan');
 
-Route::post('/adm-update-visi-misi-{slug}', [AboutSchController::class, 'update_visimisi']);
+Route::get('/tujuan-sekolah', [HomeController::class, 'tujuan'])->name('tujuan');
 
 
-/*  School Goals  */
-Route::get('/adm-tujuan-sekolah', [AboutSchController::class, 'schgoals'])->name('goals');
+/*  Profil Program Sekolah  */
 
-Route::post('/adm-update-tujuan-sekolah-{slug}', [AboutSchController::class, 'schgoals_update']);
+Route::get('/kegiatan-sekolah', [HomeController::class, 'kegiatan'])->name('kegiatan');
 
+Route::get('/ekstrakurikuler', [HomeController::class, 'ekstrakurikuler'])->name('ekstra');
 
-/*  School Greets  */
-Route::get('/adm-sambutan-kepala-sekolah', [AboutSchController::class, 'schgreets'])->name('greets');
+Route::get('/fasilitas-sekolah', [HomeController::class, 'fasilitas'])->name('fasilitas');
 
-Route::post('/adm-update-sambutan-kepala-sekolah-{slug}', [AboutSchController::class, 'schgreets_update']);
 
+/*  Profil Prestasi Sekolah  */
 
-/*  School Structure  */
-Route::get('/adm-struktur-sekolah', [AboutSchController::class, 'schstructure'])->name('structure');
+Route::get('/prestasi-kabupaten', [HomeController::class, 'preskab'])->name('pres-kab');
 
+Route::get('/prestasi-provinsi', [HomeController::class, 'presprov'])->name('pres-prov');
 
-/*  Extracurricular School  */
-Route::get('/adm-extrakurikuler', [ExtraController::class, 'index'])->name('extra');
+Route::get('/prestasi-nasional', [HomeController::class, 'presnas'])->name('pres-nas');
 
-Route::get('/adm-tambah-data-extrakurikuler', [ExtraController::class, 'create'])->name('addextra');
 
-Route::post('/adm-simpan-data-extrakurikuler', [ExtraController::class, 'store']);
+/*  Profil Informasi Sekolah  */
 
-Route::get('/adm-edit-data-extrakurikuler-{slug}', [ExtraController::class, 'edit'])->name('editextra');
+Route::get('/berita-sekolah', [InfoController::class, 'berita'])->name('berita');
 
-Route::post('/adm-update-data-extrakurikuler-{slug}', [ExtraController::class, 'update']);
+Route::get('/pengumuman-sekolah', [InfoController::class, 'pengumuman'])->name('pengumuman');
 
-Route::post('/adm-hapus-data-extrakurikuler-{slug}', [ExtraController::class, 'destroy']);
+Route::get('/agenda-sekolah', [InfoController::class, 'agenda'])->name('agenda');
 
 
-/*  School's Activity  */
-Route::get('/adm-kegiatan-sekolah', [ActivityController::class, 'index'])->name('activity');
 
-Route::get('/adm-tambah-data-kegiatan', [ActivityController::class, 'create'])->name('addactivity');
 
-Route::post('/adm-simpan-data-kegiatan', [ActivityController::class, 'store']);
 
-Route::get('/adm-edit-data-kegiatan-{slug}', [ActivityController::class, 'edit'])->name('editactivity');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::post('/adm-update-data-kegiatan-{slug}', [ActivityController::class, 'update']);
+    Route::post('/login-adm', [LoginController::class, 'login'])->name('login');
 
-Route::post('/adm-hapus-data-kegiatan-{slug}', [ActivityController::class, 'destroy']);
+});
 
 
-/*  School's Facility  */
-Route::get('/adm-fasilitas-sekolah', [FacilityController::class, 'index'])->name('facility');
+Route::post('/logout-adm', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/adm-tambah-data-fasilitas', [FacilityController::class, 'create'])->name('addfacility');
+/****************************************************************/
+/*                                                              */
+/*                      All Admin Route                         */
+/*                                                              */
+/****************************************************************/
 
-Route::post('/adm-simpan-data-fasilitas', [FacilityController::class, 'store']);
+Route::group(['middleware' => ['teacher']], function () {
 
-Route::get('/adm-edit-data-fasilitas-{slug}', [FacilityController::class, 'edit'])->name('editfacility');
+    /*  Dashboard  */
+    Route::get('/adm-dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-Route::post('/adm-update-data-fasilitas-{slug}', [FacilityController::class, 'update']);
 
-Route::post('/adm-hapus-data-fasilitas-{slug}', [FacilityController::class, 'destroy']);
 
+    /*  About School  */
+    Route::get('/adm-tentang-sekolah', [AboutSchController::class, 'schabout'])->name('aboutsch');
 
+    Route::post('/adm-update-tentang-sekolah-{slug}', [AboutSchController::class, 'schabout_update']);
 
-/*  School's News  */
-Route::get('/adm-berita', [NewsController::class, 'index'])->name('news');
 
-Route::get('/adm-tambah-data-berita', [NewsController::class, 'create'])->name('addnews');
 
-Route::post('/adm-simpan-data-berita', [NewsController::class, 'store']);
+    /*  Visi&Misi School  */
+    Route::get('/adm-visi-misi', [AboutSchController::class, 'visimisi'])->name('visimisi');
 
-Route::get('/adm-edit-data-berita-{slug}', [NewsController::class, 'edit'])->name('editnews');
+    Route::get('/adm-edit-visi-misi', [AboutSchController::class, 'editvisimisi'])->name('editvisimisi');
 
-Route::post('/adm-update-data-berita-{slug}', [NewsController::class, 'update'])->name('editnews');
+    Route::post('/adm-update-visi-misi-{slug}', [AboutSchController::class, 'update_visimisi']);
 
-Route::post('/adm-hapus-data-news-{slug}', [NewsController::class, 'destroy']);
 
 
+    /*  School Goals  */
+    Route::get('/adm-tujuan-sekolah', [AboutSchController::class, 'schgoals'])->name('goals');
 
-/*  School's Agenda  */
-Route::get('/adm-agenda-sekolah', [AgendaController::class, 'index'])->name('agenda');
+    Route::post('/adm-update-tujuan-sekolah-{slug}', [AboutSchController::class, 'schgoals_update']);
 
-Route::get('/adm-tambah-data-agenda', [AgendaController::class, 'create'])->name('addagenda');
 
-Route::post('/adm-simpan-data-agenda', [AgendaController::class, 'store']);
 
-Route::get('/adm-edit-data-agenda-{slug}', [AgendaController::class, 'edit'])->name('editagenda');
+    /*  School Greets  */
+    Route::get('/adm-sambutan-kepala-sekolah', [AboutSchController::class, 'schgreets'])->name('greets');
 
-Route::post('/adm-update-data-agenda-{slug}', [AgendaController::class, 'update'])->name('editagenda');
+    Route::post('/adm-update-sambutan-kepala-sekolah-{slug}', [AboutSchController::class, 'schgreets_update']);
 
-Route::post('/adm-hapus-data-agenda-{slug}', [AgendaController::class, 'destroy']);
 
 
+    /*  School Structure  */
+    Route::get('/adm-struktur-sekolah', [AboutSchController::class, 'schstructure'])->name('structure');
 
-/*  School's Gallery  */
-Route::get('/adm-galeri-foto', [GalleryController::class, 'index'])->name('photo');
 
-Route::get('/adm-tambah-data-galeri-foto', [GalleryController::class, 'create'])->name('addphoto');
 
-Route::post('/adm-simpan-data-galeri-foto', [GalleryController::class, 'store']);
+    /*  Extracurricular School  */
+    Route::get('/adm-extrakurikuler', [ExtraController::class, 'index'])->name('extra');
 
-Route::get('/adm-edit-data-galeri-foto-{slug}', [GalleryController::class, 'edit'])->name('editphoto');
+    Route::get('/adm-tambah-data-extrakurikuler', [ExtraController::class, 'create'])->name('addextra');
 
-Route::post('/adm-update-data-galeri-foto-{slug}', [GalleryController::class, 'update'])->name('editphoto');
+    Route::post('/adm-simpan-data-extrakurikuler', [ExtraController::class, 'store']);
 
-Route::post('/adm-hapus-data-galeri-foto-{slug}', [GalleryController::class, 'destroy']);
+    Route::get('/adm-edit-data-extrakurikuler-{slug}', [ExtraController::class, 'edit'])->name('editextra');
 
+    Route::post('/adm-update-data-extrakurikuler-{slug}', [ExtraController::class, 'update']);
 
+    Route::post('/adm-hapus-data-extrakurikuler-{slug}', [ExtraController::class, 'destroy']);
 
-/*  Teacher's Account  */
-Route::get('/adm-akun-guru', [AccountController::class, 'index'])->name('accteach');
+    Route::get('/adm-extrakurikuler-download-pdf', [ExtraController::class, 'downloadPDF']);
 
-Route::get('/adm-tambah-akun-guru', [AccountController::class, 'create'])->name('addacc');
 
-Route::post('/adm-store-data-akun', [AccountController::class, 'store']);
 
-Route::post('/adm-hapus-data-akun-{username}', [AccountController::class, 'destroy']);
+    /*  School's Activity  */
+    Route::get('/adm-kegiatan-sekolah', [ActivityController::class, 'index'])->name('activity');
 
+    Route::get('/adm-tambah-data-kegiatan', [ActivityController::class, 'create'])->name('addactivity');
 
+    Route::post('/adm-simpan-data-kegiatan', [ActivityController::class, 'store']);
 
+    Route::get('/adm-edit-data-kegiatan-{slug}', [ActivityController::class, 'edit'])->name('editactivity');
 
+    Route::post('/adm-update-data-kegiatan-{slug}', [ActivityController::class, 'update']);
 
-//Teacher's Data
-Route::get('/adm-data-guru', [TeacherSchController::class, 'index'])->name('tcrdata');
+    Route::post('/adm-hapus-data-kegiatan-{slug}', [ActivityController::class, 'destroy']);
 
-Route::get('/adm-edit-data-guru', [TeacherSchController::class, 'edit'])->name('edittcrdata');
+    Route::get('/adm-kegiatan-download-pdf', [ActivityController::class, 'downloadPDF']);
 
-Route::get('/adm-tambah-data-guru', [TeacherSchController::class, 'create'])->name('addtcrdata');
 
 
-//Student's Data
-Route::get('/adm-tambah-data-siswa', [StudentSchController::class, 'stdadddata'])->name('stddata');
+    /*  School's Facility  */
+    Route::get('/adm-fasilitas-sekolah', [FacilityController::class, 'index'])->name('facility');
 
-Route::get('/adm-data-siwa-kelas-1', [StudentSchController::class, 'stddata1'])->name('stddata1');
+    Route::get('/adm-tambah-data-fasilitas', [FacilityController::class, 'create'])->name('addfacility');
 
-Route::get('/adm-data-siwa-kelas-2', [StudentSchController::class, 'stddata2'])->name('stddata2');
+    Route::post('/adm-simpan-data-fasilitas', [FacilityController::class, 'store']);
 
-Route::get('/adm-data-siwa-kelas-3', [StudentSchController::class, 'stddata3'])->name('stddata3');
+    Route::get('/adm-edit-data-fasilitas-{slug}', [FacilityController::class, 'edit'])->name('editfacility');
 
-Route::get('/adm-data-siwa-kelas-4', [StudentSchController::class, 'stddata4'])->name('stddata4');
+    Route::post('/adm-update-data-fasilitas-{slug}', [FacilityController::class, 'update']);
 
-Route::get('/adm-data-siwa-kelas-5', [StudentSchController::class, 'stddata5'])->name('stddata5');
+    Route::post('/adm-hapus-data-fasilitas-{slug}', [FacilityController::class, 'destroy']);
 
-Route::get('/adm-data-siwa-kelas-6', [StudentSchController::class, 'stddata6'])->name('stddata6');
+    Route::get('/adm-fasilitas-download-pdf', [FacilityController::class, 'downloadPDF']);
 
 
 
-/*   Admin's Profile   */
-Route::get('/adm-profile', [ProfileController::class, 'index'])->name('profile');
+    /*  School's News  */
+    Route::get('/adm-berita-sekolah', [NewsController::class, 'index'])->name('news');
+
+    Route::get('/adm-tambah-data-berita', [NewsController::class, 'create'])->name('addnews');
+
+    Route::post('/adm-simpan-data-berita', [NewsController::class, 'store']);
+
+    Route::get('/adm-edit-data-berita-{slug}', [NewsController::class, 'edit'])->name('editnews');
+
+    Route::post('/adm-update-data-berita-{slug}', [NewsController::class, 'update'])->name('editnews');
+
+    Route::post('/adm-hapus-data-berita-{slug}', [NewsController::class, 'destroy']);
+
+    Route::get('/adm-berita-download-pdf', [NewsController::class, 'downloadPDF']);
+
+
+
+    /*  School's Announs  */
+    Route::get('/adm-pengumuman-sekolah', [AnnounController::class, 'index'])->name('announs');
+
+    Route::get('/adm-tambah-data-pengumuman', [AnnounController::class, 'create'])->name('addannouns');
+
+    Route::post('/adm-simpan-data-pengumuman', [AnnounController::class, 'store']);
+
+    Route::get('/adm-edit-data-pengumuman-{slug}', [AnnounController::class, 'edit'])->name('editannouns');
+
+    Route::post('/adm-update-data-pengumuman-{slug}', [AnnounController::class, 'update'])->name('editannouns');
+
+    Route::post('/adm-hapus-data-pengumuman-{slug}', [AnnounController::class, 'destroy']);
+
+    Route::get('/adm-pengumuman-download-pdf', [AnnounController::class, 'downloadPDF']);
+
+
+
+    /*  School's Agenda  */
+    Route::get('/adm-agenda-sekolah', [AgendaController::class, 'index'])->name('agenda');
+
+    Route::get('/adm-tambah-data-agenda', [AgendaController::class, 'create'])->name('addagenda');
+
+    Route::post('/adm-simpan-data-agenda', [AgendaController::class, 'store']);
+
+    Route::get('/adm-edit-data-agenda-{slug}', [AgendaController::class, 'edit'])->name('editagenda');
+
+    Route::post('/adm-update-data-agenda-{slug}', [AgendaController::class, 'update'])->name('editagenda');
+
+    Route::post('/adm-hapus-data-agenda-{slug}', [AgendaController::class, 'destroy']);
+
+    Route::get('/adm-agenda-download-pdf', [AgendaController::class, 'downloadPDF']);
+
+
+
+    /*  School's Performance  */
+    Route::get('/adm-prestasi-sekolah', [PerformanceController::class, 'index'])->name('performance');
+
+    Route::get('/adm-tambah-prestasi-sekolah', [PerformanceController::class, 'create'])->name('addperformance');
+
+    Route::post('/adm-simpan-data-prestasi', [PerformanceController::class, 'store']);
+
+    Route::get('/adm-edit-data-prestasi-{slug}', [PerformanceController::class, 'edit'])->name('editperformance');
+
+    Route::post('/adm-update-data-prestasi-{slug}', [PerformanceController::class, 'update'])->name('editperformance');
+
+    Route::post('/adm-hapus-data-prestasi-{slug}', [PerformanceController::class, 'destroy']);
+
+    Route::get('/adm-prestasi-download-pdf', [PerformanceController::class, 'downloadPDF']);
+
+
+
+    /*  School's Gallery  */
+    Route::get('/adm-galeri-foto', [GalleryController::class, 'index'])->name('photo');
+
+    Route::get('/adm-tambah-data-galeri-foto', [GalleryController::class, 'create'])->name('addphoto');
+
+    Route::post('/adm-simpan-data-galeri-foto', [GalleryController::class, 'store']);
+
+    Route::get('/adm-edit-data-galeri-foto-{slug}', [GalleryController::class, 'edit'])->name('editphoto');
+
+    Route::post('/adm-update-data-galeri-foto-{slug}', [GalleryController::class, 'update'])->name('editphoto');
+
+    Route::post('/adm-hapus-data-galeri-foto-{slug}', [GalleryController::class, 'destroy']);
+
+
+
+    /*   User Profile   */
+    Route::get('/adm-profile', [ProfileController::class, 'index'])->name('profile');
+
+    Route::get('/adm-pengaturan-akun', [ProfileController::class, 'edit'])->name('editprofile');
+
+    Route::post('/adm-update-profile-{username}', [ProfileController::class, 'update']);
+
+    Route::post('/adm-update-password-{username}', [ProfileController::class, 'passupdate']);
+});
+
+
+
+/****************************************************************/
+/*                                                              */
+/*                     Super Admin Route                        */
+/*                                                              */
+/****************************************************************/
+
+Route::middleware(['superadmin'])->group(function () {
+
+    /*  Teacher's Account  */
+    Route::get('/adm-akun-guru', [AccountController::class, 'index'])->name('accteach');
+
+    Route::get('/adm-tambah-akun-guru', [AccountController::class, 'create'])->name('addacc');
+
+    Route::post('/adm-store-data-akun', [AccountController::class, 'store']);
+
+    Route::post('/adm-hapus-data-akun-{username}', [AccountController::class, 'destroy']);
+
+});
+
+
+
+/****************************************************************/
+/*                                                              */
+/*                 Super Admin, Admin Route                     */
+/*                                                              */
+/****************************************************************/
+
+Route::middleware(['admin'])->group(function () {
+
+    //Teacher's Data
+    Route::get('/adm-data-guru', [TeacherSchController::class, 'index'])->name('tcrdata');
+
+    Route::get('/adm-edit-data-guru', [TeacherSchController::class, 'edit'])->name('edittcrdata');
+
+    Route::get('/adm-tambah-data-guru', [TeacherSchController::class, 'create'])->name('addtcrdata');
+});
+
+
+
+/****************************************************************/
+/*                                                              */
+/*                      Teacher Route                           */
+/*                                                              */
+/****************************************************************/
+Route::middleware(['teacher'])->group(function () {
+
+    //Student's Data
+    Route::get('/adm-tambah-data-siswa', [StudentSchController::class, 'stdadddata'])->name('stddata');
+
+    Route::get('/adm-data-siwa-kelas-1', [StudentSchController::class, 'stddata1'])->name('stddata1');
+
+    Route::get('/adm-data-siwa-kelas-2', [StudentSchController::class, 'stddata2'])->name('stddata2');
+
+    Route::get('/adm-data-siwa-kelas-3', [StudentSchController::class, 'stddata3'])->name('stddata3');
+
+    Route::get('/adm-data-siwa-kelas-4', [StudentSchController::class, 'stddata4'])->name('stddata4');
+
+    Route::get('/adm-data-siwa-kelas-5', [StudentSchController::class, 'stddata5'])->name('stddata5');
+
+    Route::get('/adm-data-siwa-kelas-6', [StudentSchController::class, 'stddata6'])->name('stddata6');
+});

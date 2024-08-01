@@ -1,0 +1,238 @@
+#information-about{
+    padding-top: 122px;
+}
+
+#header-information{
+    background-color: rgb(249, 186, 50);
+    padding: 50px 0 50px 0;
+}
+
+#header-information h1{
+    color: rgb(47, 49, 49);
+    font-weight: 900;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#all-news{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#all-news .news-img{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#all-news .news-img img{
+    width: 137vh;
+    border-radius: 3px;
+}
+
+#all-news .news-items {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 30px;
+}
+
+#all-news .news-items h5{
+    font-weight: 700;
+    color: rgb(249, 186, 50);
+    margin: 25px 0 15px 0;
+    padding: 0 0 10px 0;
+    font-size: xx-large;
+    border-bottom: 3px solid rgb(249, 186, 50);
+}
+
+#all-news .news-items span{
+    color: rgb(66, 110, 134);
+    margin: 0 0 10px 0;
+    font-size: medium;
+    font-weight: 700;
+}
+
+#all-news .news-items p{
+    color: rgb(47, 49, 49);
+    font-size: large;
+    font-weight: 500;
+    text-align: justify;
+    margin: 0px;
+}
+
+#all-news .news-items .news-detail{
+    margin: 35px 0 35px 0;
+}
+
+#all-news .news-items .news-detail a{
+    text-decoration: none;
+    background-color: rgb(249, 186, 50);
+    padding: 20px;
+    font-size: larger;
+    color: rgb(248, 241, 229);
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+
+#all-announ{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#all-announ .announ-img{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#all-announ .announ-img img{
+    width: 137vh;
+    border-radius: 3px;
+}
+
+#all-announ .announ-items {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 30px;
+}
+
+#all-announ .announ-items h5{
+    font-weight: 700;
+    color: rgb(249, 186, 50);
+    margin: 25px 0 15px 0;
+    padding: 0 0 10px 0;
+    font-size: xx-large;
+    border-bottom: 3px solid rgb(249, 186, 50);
+}
+
+#all-announ .announ-items span{
+    color: rgb(66, 110, 134);
+    margin: 0 0 10px 0;
+    font-size: medium;
+    font-weight: 700;
+}
+
+#all-announ .announ-items p{
+    color: rgb(47, 49, 49);
+    font-size: large;
+    font-weight: 500;
+    text-align: justify;
+    margin: 0px;
+}
+
+#all-announ .announ-items .announ-detail{
+    margin: 35px 0 35px 0;
+}
+
+#all-announ .announ-items .announ-detail a{
+    text-decoration: none;
+    background-color: rgb(249, 186, 50);
+    padding: 20px;
+    font-size: larger;
+    color: rgb(248, 241, 229);
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+
+#information-about .container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.agenda-detail{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 10px 0 15px 0;
+    margin: 15px 0 20px 0;
+    border-bottom: 3px solid rgb(249, 186, 50);
+}
+
+.agenda-detail .agenda-name h5{
+    color: rgb(249, 186, 50);
+    margin: 0 0 10px 0;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.agenda-date-desc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agenda-date-desc .agenda-date{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.agenda-date-desc .agenda-date svg{
+    width: 20px;
+    margin: 0 10px 0 0;
+    color: rgb(47, 49, 49);
+}
+
+.agenda-date-desc .agenda-date .agenda-hours{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+    padding: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
+    color: rgb(66, 110, 134);
+}
+
+.agenda-date-desc .agenda-date .agenda-loc{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(66, 110, 134);
+    font-weight: 500;
+    margin: 5px 0 5px 0;
+}
+
+.agenda-date-desc .agenda-desc{
+    width: 450px;
+    margin: 0px 100px 0 0px;
+}
+
+.agenda-date-desc .agenda-desc p{
+    margin: 0px;
+    font-size: medium;
+    font-weight: 500;
+    text-align: justify;
+    color: rgb(47, 49, 49);
+}
+
+@media (max-width: 774px) {
+    #all-news .news-img img{
+        width: 380px;
+    }
+
+    #all-news .news-items {
+        padding: 0px;
+    }
+
+    #all-announ .announ-img img{
+        width: 380px;
+    }
+
+    #all-announ .announ-items {
+        padding: 0px;
+    }
+
+    .agenda-date-desc .agenda-desc{
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+}

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\News;
+use PDF;
 
 class NewsController extends Controller
 {
@@ -36,19 +37,19 @@ class NewsController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $validateData = $request->validate([
+            'name' => 'required',
+            'desc' => 'required',
+        ]);
+
+        if (empty($validateData['slug'])) {
+            $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
+        }
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('images/news', $name, 'public');
-
-            $validateData = $request->validate([
-                'name' => 'required',
-                'desc' => 'required',
-            ]);
-
-            if (empty($validateData['slug'])) {
-                $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
-            }
+            $path = $image->storeAs('images/news/'.$validateData['slug'].'/', $name, 'public');
 
             $validateData['img_name'] = $path;
             News::create($validateData);
@@ -84,24 +85,34 @@ class NewsController extends Controller
         $news = News::where('slug', $slug)->firstOrFail();
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required',
             'desc' => 'required',
-            'slug' => 'required'
+            'slug' => 'required',
         ]);
 
         $imagePath = $news['img_name'];
 
-        if (Storage::disk('public')->exists($imagePath)) {
+        if ($request['image']) {
 
-            Storage::disk('public')->delete($imagePath);
+            if (Storage::disk('public')->exists($imagePath)) {
 
-            $image = $request->file('image');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('images/news', $name, 'public');
+                $path = 'public/images/news/'.$news['slug'];
 
-            $news['img_name'] = $path;
-            $news->update($request->only('name','img_name', 'desc'));
+                Storage::deleteDirectory($path);
+
+                $image = $request->file('image');
+                $name = time() . '.' . $image->getClientOriginalExtension();
+                $pathImage = $image->storeAs('images/news/'.$news['slug'].'/', $name, 'public');
+
+                $news['img_name'] = $pathImage;
+                $news->update($request->only('name','img_name', 'desc'));
+
+                $news = News::where('slug', $slug)->firstOrFail();
+
+                return redirect()->route('news')->with('success', 'Data Telah diubah!');
+            }
+        } else {
+            $news->update($request->only('name', 'desc'));
 
             $news = News::where('slug', $slug)->firstOrFail();
 
@@ -119,10 +130,15 @@ class NewsController extends Controller
     {
         $news = News::where('slug', $slug)->firstOrFail();
 
-        $imagePath = $news['img_name'];
+        $imagePath = 'public/'.$news['img_name'];
 
-        if (Storage::disk('public')->exists($imagePath)) {
-            Storage::disk('public')->delete($imagePath);
+        if (Storage::exists($imagePath)) {
+
+            $path = 'public/images/news/'.$news['slug'];
+
+            Storage::deleteDirectory($path);
+
+            Storage::delete($imagePath);
 
             $news->delete();
 
@@ -130,6 +146,16 @@ class NewsController extends Controller
         }
 
         return back()->with('error', 'Gambar tidak ditemukan.');
+    }
 
+    public function downloadPDF()
+    {
+        $data = News::all(); // Ambil semua data dari tabel yang diinginkan
+
+        $pdf = PDF::loadView('admin.components.news.pdfview', compact('data'));
+
+        $fileName = 'Data Berita SD YPKP 2 Sentani'.'.pdf';
+
+        return $pdf->download($fileName);
     }
 }

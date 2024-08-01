@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('activitys', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img_name')->default('img');
+            $table->string('img_name')->default('images/activity/img-activity.jpg');
             $table->text('desc');
             $table->string('slug');
             $table->rememberToken();

@@ -13,5 +13,5 @@ class Agenda extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['name', 'agenda_start', 'agenda_end', 'desc', 'slug'];
+    protected $fillable = ['name', 'location',  'agenda_start', 'agenda_end', 'desc', 'slug'];
 }

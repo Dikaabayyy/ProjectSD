@@ -33,6 +33,25 @@
 </head>
 
 <body id="body">
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logOut" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logOutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-0">
+                <div class="modal-body">
+                    Apakah Anda Yakin Ingin Keluar?
+                </div>
+                <div class="modal-footer" id="logout-modal">
+                    <form action="/logout-adm" method="POST">
+                        @csrf
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-danger">Keluar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     @if (session('success'))
         <!-- Modal -->
         <div id="successModal" class="modal">

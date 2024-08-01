@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('img_name')->default('img');
+            $table->string('img_name')->default('images/extra/img-extra.jpg');
             $table->text('desc');
             $table->string('slug');
             $table->rememberToken();

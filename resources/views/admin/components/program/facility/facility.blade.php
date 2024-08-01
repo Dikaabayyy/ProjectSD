@@ -23,7 +23,7 @@
                   </div>
                   <div class="col" id="ops">
                       <a type="button" href="/adm-tambah-data-fasilitas" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data</a>
-                      <button type="button" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</button>
+                      <a type="button" href="/adm-fasilitas-download-pdf" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</a>
                   </div>
 
 
@@ -71,7 +71,7 @@
                             {{ $index + 1 }}
                         </th>
                         <td class="pct">
-                            <img src="" alt="" class="img-tcr">
+                            <img src="{{ asset('storage/'.$f->img_name) }}" alt="" class="img-tcr">
                         </td>
                         <td class="data">
                             {{ $f->name }}
