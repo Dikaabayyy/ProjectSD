@@ -23,7 +23,6 @@
                     <form action="/adm-store-data-akun" enctype="multipart/form-data" method="POST">
                         @csrf
 
-                        <input type="hidden" value="Guru" name="role" id="inputrole">
                       <div class="row mb-3">
                         <label for="name" class="col-md-4 col-lg-3 col-form-label">Nama Guru</label>
                         <div class="col-md-8 col-lg-9">

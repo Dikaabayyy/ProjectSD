@@ -128,17 +128,17 @@
       </li><!-- End Information Nav -->
 
       <li class="nav-item">
-        <a class="{{ Route::is('photo', 'addphoto', 'video') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
+        <a class="{{ Route::is('photo', 'addphoto', 'editphoto', 'video', 'addvideo', 'editvideo') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-images"></i><span>Galeri</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="gallery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/adm-galeri-foto" class="{{ Route::is('photo', 'addphoto') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-galeri-foto" class="{{ Route::is('photo', 'addphoto', 'editphoto') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Foto</span>
             </a>
           </li>
           <li>
-            <a href="/adm-video" class="{{ Route::is('video') ? 'nav-link' : 'nav-link collapsed' }}">
+            <a href="/adm-galeri-video" class="{{ Route::is( 'video', 'addvideo', 'editvideo') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Video</span>
             </a>
           </li>
@@ -146,77 +146,33 @@
       </li><!-- End Gallery Nav -->
 
 
-      <li class="nav-heading">Admin</li>
 
-      @auth
-        @if (Auth::user()->role == 'SuperAdmin')
+    @auth
+        @if (Auth::user()->role == 'Admin')
 
-      <li class="nav-item">
-        <a class="{{ Route::is('accteach', 'addacc') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-akun-guru">
-            <i class="bi bi-person-badge"></i><span>Data Akun</span>
-        </a>
-      </li><!-- End Teacher's Data Nav -->
+            <li class="nav-heading">Admin</li>
+            <li class="nav-item">
+                <a class="{{ Route::is('accteach', 'addacc') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-akun-guru">
+                    <i class="bi bi-person-badge"></i><span>Data Akun</span>
+                </a>
+            </li><!-- End Teacher's Data Nav -->
 
-        @endif
-      @endauth
-
-      @auth
-          @if (Auth::user()->role == 'SuperAdmin')
             <li class="nav-item">
                 <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
                     <i class="bi bi-person-vcard"></i><span>Data Guru</span>
                 </a>
             </li><!-- End Teacher's Data Nav -->
-            @elseif (Auth::user()->role == 'Admin')
-                <li class="nav-item">
-                    <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
-                        <i class="bi bi-person-vcard"></i><span>Data Guru</span>
-                    </a>
-                </li><!-- End Teacher's Data Nav -->
-            @endif
+        @endif
     @endauth
 
 
       <li class="nav-heading">Guru</li>
 
       <li class="nav-item">
-        <a class="{{ Route::is('stddata', 'stddata1', 'stddata2', 'stddata3', 'stddata4', 'stddata5', 'stddata6') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#students-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-person-lines-fill"></i><span>Data Siswa</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="{{ Route::is('stddata', 'stddata1', 'stddata2', 'stddata3', 'stddata4', 'stddata5', 'stddata6', 'stdadddata' ,'editstddata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-siswa">
+            <i class="bi bi-person-lines-fill"></i><span>Data Siswa</span>
         </a>
-        <ul id="students-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/adm-data-siwa-kelas-1" class="{{ Route::is('stddata1') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 1</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-data-siwa-kelas-2" class="{{ Route::is('stddata2') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 2</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-data-siwa-kelas-3" class="{{ Route::is('stddata3') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 3</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-data-siwa-kelas-4" class="{{ Route::is('stddata4') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 4</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-data-siwa-kelas-5" class="{{ Route::is('stddata5') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 5</span>
-            </a>
-          </li>
-          <li>
-            <a href="/adm-data-siwa-kelas-6" class="{{ Route::is('stddata6') ? 'nav-link' : 'nav-link collapsed' }}">
-              <i class="bi bi-circle-fill"></i><span>Data Kelas 6</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Student's Nav -->
-
+      </li><!-- End Students's Data Nav -->
 
       <li class="nav-heading">Pages</li>
 

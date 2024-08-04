@@ -4,7 +4,7 @@
             <div class="sch-address">
                 <div class="address-header">
                     <img src="img/main/logo.png" alt="">
-                    <h5>SD YPKP 2 Sentani</h5>
+                    <h5> <a href="/login" class="padding: 0px;">SD YPKP 2 Sentani </a></h5>
                 </div>
                 <div class="footer-address">
                     <p>

@@ -143,6 +143,11 @@
                 card.style.display = 'block';
             });
         });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var video = document.getElementById('videoPlayer');
+            video.volume = 0.5; // Set volume to medium (range is 0.0 to 1.0)
+        });
     </script>
 </body>
 </html>

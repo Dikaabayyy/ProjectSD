@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\GalleryPhoto;
 
-class GalleryController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class GalleryController extends Controller
     public function index()
     {
         $photo = GalleryPhoto::get();
-        return view('admin.components.gallery.photo', compact('photo'));
+        return view('admin.components.gallery.photos.photo', compact('photo'));
     }
 
     /**
@@ -24,7 +24,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('admin.components.gallery.addphoto');
+        return view('admin.components.gallery.photos.addphoto');
     }
 
     /**
@@ -73,7 +73,7 @@ class GalleryController extends Controller
     public function edit($slug)
     {
         $photo = GalleryPhoto::where('slug', $slug)->firstOrFail();
-        return view('admin.components.gallery.editphoto', compact('photo'));
+        return view('admin.components.gallery.photos.editphoto', compact('photo'));
     }
 
     /**

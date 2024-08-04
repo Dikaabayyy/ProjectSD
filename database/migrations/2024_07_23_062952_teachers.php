@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
+            $table->string('slug');
             $table->binary('gender');
-            $table->string('brith_place');
+            $table->string('birth_place');
             $table->date('birth_date');
             $table->string('status');
             $table->string('img_name')->default('images/profile/profile-img.png');
@@ -26,16 +27,17 @@ return new class extends Migration
 
         Schema::create('teachers_datas', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('nip')->nullable();
-            $table->string('nuptk')->nullable();
+            $table->string('slug');
+            $table->string('nip')->nullable()->default('-');
+            $table->string('nuptk')->nullable()->default('-');
             $table->string('position');
-            $table->string('gol')->nullable();
+            $table->string('gol')->nullable()->default('-');
             $table->string('ijazah');
             $table->string('subjects');
             $table->year('ijazah_date');
             $table->date('start_up_teaching');
             $table->date('start_working');
-            $table->string('certificate_status')->nullable();
+            $table->string('certificate_status')->nullable()->default('-');
             $table->year('certificate_year')->nullable();
             $table->timestamps();
         });

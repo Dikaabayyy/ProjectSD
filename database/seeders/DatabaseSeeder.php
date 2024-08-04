@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Announ;
 use App\Models\Facility;
+use App\Models\Students;
 use App\Models\TeachersData;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,14 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        User::factory()->create([
-            'username' => 'superadmin',
-            'name' => 'Super Admin',
-            'email' => 'superadmin@gmail.com',
-            'password' => Hash::make('@SuperAdmin1#22OE'),
-            'role' => 'SuperAdmin'
-        ]);
 
         User::factory()->create([
             'username' => 'admin',
@@ -42,10 +35,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivitySeeder::class);
         $this->call(FacilitySeeder::class);
         $this->call(TeacherSeeder::class);
+        $this->call(PerformaceSeeder::class);
         $this->call(NewsSeeder::class);
+        $this->call(AnnounSeeder::class);
         $this->call(AgendaSeeder::class);
         $this->call(GalleryPhotoSeeder::class);
-        $this->call(PerformaceSeeder::class);
-        $this->call(AnnounSeeder::class);
+        $this->call(GalleryVideoSeeder::class);
+        $this->call(StudentsSeeder::class);
     }
 }

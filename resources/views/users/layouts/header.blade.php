@@ -92,8 +92,8 @@
                         <div class="card-hover-gallery" id="card-hover-gallery">
                             <div class="card-dropdown">
                                 <div class="info-sch">
-                                    <a href="" class="{{ Route::is('foto') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Foto</a>
-                                    <a href="" class="{{ Route::is('video') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Video</a>
+                                    <a href="/galeri-foto-sekolah" class="{{ Route::is('foto') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Foto</a>
+                                    <a href="/galeri-video-sekolah" class="{{ Route::is('video') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Video</a>
                                 </div>
                             </div>
                         </div>
@@ -171,10 +171,10 @@
                         <a href="" class="{{ Route::is('foto', 'video') ? 'btn-nav-drop' : 'btn-nav-drop collapsed' }}">Galeri</a>
                         <div class="profil-item-responsive">
                             <span>
-                                <a href="/galeri-foto" class="{{ Route::is('foto') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Foto</a>
+                                <a href="/galeri-foto-sekolah" class="{{ Route::is('foto') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Foto</a>
                             </span>
                             <span>
-                                <a href="/galeri-video" class="{{ Route::is('video') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Video</a>
+                                <a href="/galeri-video-sekolah" class="{{ Route::is('video') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Video</a>
                             </span>
                         </div>
                     </span>

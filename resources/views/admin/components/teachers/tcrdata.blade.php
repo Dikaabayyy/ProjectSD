@@ -32,7 +32,7 @@
                     </div>
                     <div class="col" id="ops">
                         <a type="button" href="/adm-tambah-data-guru" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data Guru</a>
-                        <button type="button" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</button>
+                        <a type="button" href="/adm-data-guru-download-pdf" class="btn btn-success"><i class="bi bi-download"></i> Unduh Data</a>
                     </div>
 
                 </div>
@@ -50,6 +50,29 @@
                     <tbody>
 
                        @foreach ($teacher as $index => $t)
+                            <!-- Delete Teacher Modal -->
+                            <div class="modal fade" id="deltcrModal-{{ $t->slug }}" role="dialog" tabindex="-1" aria-labelledby="deltcrModalLabel-{{ $t->slug }}" aria-hidden="true" data-bs-backdrop="static">
+                                <div class="modal-dialog modal-dialog-centered" id="deletemodal" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="deltcrModalLabel-{{ $t->slug }}">Perhatian!!!</h1>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            Apakah anda yakin ingin menghapus data ini?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <form action="/adm-hapus-data-guru-{{ $t->slug }}" method="POST">
+                                                @csrf
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                                <button type="submit" class="btn btn-danger">Hapus Data</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <tr>
                                 <th scope="row" class="nb">
@@ -86,11 +109,11 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Tempat Lahir</th>
-                                                        <td>{{ $t->brith_place }}</td>
+                                                        <td>{{ $t->birth_place }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Tanggal Lahir</th>
-                                                        <td>{{ $t->birth_date }}</td>
+                                                        <td>{{ $t->formatted_date_birth }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Jabatan</th>
@@ -106,11 +129,11 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Mulai diangkat/Mengajar</th>
-                                                        <td>{{ $t->teachers_data->start_up_teaching }}</td>
+                                                        <td>{{ $t->formatted_date_teaching }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Tanggal Mulai Bekerja</th>
-                                                        <td>{{ $t->teachers_data->start_working }}</td>
+                                                        <td>{{ $t->formatted_date_working }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Mapel Utama</th>
@@ -126,8 +149,8 @@
                                     </div>
                                 </td>
                                 <td class="opt" id="options">
-                                    <a type="buton" href="/adm-edit-data-guru" class="btn btn-warning mb-3"><i class="bi bi-pencil-square"></i> Edit</a><br>
-                                    <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                                    <a type="buton" href="/adm-edit-data-guru-{{ $t->slug }}" class="btn btn-warning mb-3"><i class="bi bi-pencil-square"></i> Edit</a><br>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deltcrModal-{{ $t->slug }}"><i class="bi bi-trash"></i> Hapus</button>
                                 </td>
                             </tr>
                         @endforeach

@@ -50,6 +50,16 @@ function previewImage(event) {
     reader.readAsDataURL(event.target.files[0]);
 }
 
+function previewVideo(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('preview-video');
+        output.src = reader.result;
+        output.style.display = 'block';
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
 function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -57,3 +67,11 @@ function isNumberKey(evt) {
     return true;
 }
 
+function validateNumberInput(input) {
+    input.value = input.value.replace(/[^0-9]/g, '');
+}
+
+function validateYearInput(input) {
+    // Membatasi input agar hanya menerima angka dan tidak lebih dari 4 karakter
+    input.value = input.value.replace(/[^0-9]/g, '').slice(0, 4);
+}

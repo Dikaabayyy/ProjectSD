@@ -13,8 +13,11 @@ class TeachersData extends Model
 
     protected $primaryKey = 'id';
 
+    protected $fillable =['slug', 'nip', 'nuptk', 'position', 'gol', 'ijazah', 'ijazah_date', 'subjects', 'start_up_teaching', 'start_working', 'certificate_status', 'certificate_year'];
+
     public function teachers()
     {
         return $this->hasOne(Teacher::class);
     }
+
 }

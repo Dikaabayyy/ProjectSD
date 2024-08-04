@@ -44,13 +44,13 @@
               <tbody>
 
                 @foreach ($performance as $index => $p)
-                    <!-- Delete Extracurricular Modal -->
-                    <div class="modal fade" id="delextraModal-{{ $p->slug }}" role="dialog" tabindex="-1" aria-labelledby="delextraModalLabel-{{ $p->slug }}" aria-hidden="true" data-bs-backdrop="static">
+                    <!-- Delete Performance Modal -->
+                    <div class="modal fade" id="delperfModal-{{ $p->slug }}" role="dialog" tabindex="-1" aria-labelledby="delperfModalLabel-{{ $p->slug }}" aria-hidden="true" data-bs-backdrop="static">
                         <div class="modal-dialog modal-dialog-centered" id="deletemodal" role="document">
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="delextraModalLabel-{{ $p->slug }}">Perhatian!!!</h1>
+                                    <h1 class="modal-title fs-5" id="delperfModalLabel-{{ $p->slug }}">Perhatian!!!</h1>
                                 </div>
 
                                 <div class="modal-body">
@@ -92,7 +92,7 @@
                         </td>
                         <td class="opt" id="options">
                             <a type="buton" href="/adm-edit-data-prestasi-{{ $p->slug }}" class="btn btn-warning mb-3"><i class="bi bi-pencil-square"></i> Ubah</a><br>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delextraModal-{{ $p->slug }}"><i class="bi bi-trash"></i> Hapus</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delperfModal-{{ $p->slug }}"><i class="bi bi-trash"></i> Hapus</button>
                         </td>
                     </tr>
 

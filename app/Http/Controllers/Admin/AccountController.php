@@ -17,7 +17,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $user = User::where('role', 'Guru')->get();
+        $user = User::where('role', 'Teacher')->get();
         return view('admin.components.accounts.account', compact('user'));
     }
 
@@ -37,8 +37,7 @@ class AccountController extends Controller
         $validateData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|string'
+            'password' => 'required|string|min:8|confirmed'
         ]);
 
         $userAcc = request()->all();
@@ -47,7 +46,7 @@ class AccountController extends Controller
 
         $userAcc['username'] = $accObject->generateUsername($request['name']);
         $userAcc['password'] = Hash::make($validateData['password']);
-        $userAcc['role'] = $request['role'];
+        $userAcc['role'] = 'Teacher';
 
         $user = User::create($userAcc);
 

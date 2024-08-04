@@ -10,6 +10,7 @@ use App\Models\AboutSch;
 use App\Models\VisiMisi;
 use App\Models\GoalsSch;
 use App\Models\Teacher;
+use App\Models\Students;
 
 class AdminController extends Controller
 {
@@ -22,7 +23,14 @@ class AdminController extends Controller
         $visimisi = VisiMisi::get();
         $goals = GoalsSch::get();
         $teacher = Teacher::limit(15)->get();
-        return view('admin.components.dashboard', compact('about', 'visimisi', 'goals', 'teacher'));
+
+        $students1 = Students::where('class', '1')->count();
+        $students2 = Students::where('class', '2')->count();
+        $students3 = Students::where('class', '3')->count();
+        $students4 = Students::where('class', '4')->count();
+        $students5 = Students::where('class', '5')->count();
+        $students6 = Students::where('class', '6')->count();
+        return view('admin.components.dashboard', compact('about', 'visimisi', 'goals', 'teacher', 'students1', 'students2', 'students3', 'students4', 'students5', 'students6'));
     }
 
     /**

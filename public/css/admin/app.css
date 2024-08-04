@@ -380,7 +380,7 @@
 }
 
 .prev-news{
-    width: 250px;
+    width: 200px;
     height: auto;
     margin-bottom: 10px;
     margin-right: 30px;
@@ -460,4 +460,34 @@
 
 #profile-card td{
     padding-left: 0px;
+}
+
+.btn-detail{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-decoration: none;
+}
+
+.btn-detail a{
+    font-weight: 500;
+    background-color: rgb(140, 0, 255);
+    border-radius: 5px;
+    border: 1px solid rgb(140, 0, 255);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.btn-detail a:hover{
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid rgb(140, 0, 255);
+    color: rgb(140, 0, 255);
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.5s;
 }

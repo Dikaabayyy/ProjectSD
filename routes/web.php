@@ -4,18 +4,18 @@ use Illuminate\Support\Facades\Route;
 
 /*   User Controller*/
 use App\Http\Controllers\User\HomeController;
-
+use App\Http\Controllers\User\GaleriController;
 use App\Http\Controllers\User\InfoController;
 
 /*   Auth Controller   */
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ProfileController;
 
 /*   Admin Controller   */
 use App\Http\Controllers\Admin\AboutSchController;
 use App\Http\Controllers\Admin\ExtraController;
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\FacilityController;
@@ -24,7 +24,9 @@ use App\Http\Controllers\Admin\TeacherSchController;
 use App\Http\Controllers\Admin\StudentSchController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnnounController;
-use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Admin\VideoController;
+use App\Http\Middleware\Teacher;
 
 /****************************************************************/
 /*                                                              */
@@ -66,7 +68,7 @@ Route::get('/prestasi-provinsi', [HomeController::class, 'presprov'])->name('pre
 Route::get('/prestasi-nasional', [HomeController::class, 'presnas'])->name('pres-nas');
 
 
-/*  Profil Informasi Sekolah  */
+/*  Informasi Sekolah  */
 
 Route::get('/berita-sekolah', [InfoController::class, 'berita'])->name('berita');
 
@@ -75,7 +77,11 @@ Route::get('/pengumuman-sekolah', [InfoController::class, 'pengumuman'])->name('
 Route::get('/agenda-sekolah', [InfoController::class, 'agenda'])->name('agenda');
 
 
+/*  Galeri Sekolah  */
 
+Route::get('/galeri-foto-sekolah', [GaleriController::class, 'foto'])->name('foto');
+
+Route::get('/galeri-video-sekolah', [GaleriController::class, 'video'])->name('video');
 
 
 Route::group(['middleware' => ['guest']], function () {
@@ -255,18 +261,33 @@ Route::group(['middleware' => ['teacher']], function () {
 
 
 
-    /*  School's Gallery  */
-    Route::get('/adm-galeri-foto', [GalleryController::class, 'index'])->name('photo');
+    /*  School's Gallery Photo  */
+    Route::get('/adm-galeri-foto', [PhotoController::class, 'index'])->name('photo');
 
-    Route::get('/adm-tambah-data-galeri-foto', [GalleryController::class, 'create'])->name('addphoto');
+    Route::get('/adm-tambah-data-galeri-foto', [PhotoController::class, 'create'])->name('addphoto');
 
-    Route::post('/adm-simpan-data-galeri-foto', [GalleryController::class, 'store']);
+    Route::post('/adm-simpan-data-galeri-foto', [PhotoController::class, 'store']);
 
-    Route::get('/adm-edit-data-galeri-foto-{slug}', [GalleryController::class, 'edit'])->name('editphoto');
+    Route::get('/adm-edit-data-galeri-foto-{slug}', [PhotoController::class, 'edit'])->name('editphoto');
 
-    Route::post('/adm-update-data-galeri-foto-{slug}', [GalleryController::class, 'update'])->name('editphoto');
+    Route::post('/adm-update-data-galeri-foto-{slug}', [PhotoController::class, 'update'])->name('editphoto');
 
-    Route::post('/adm-hapus-data-galeri-foto-{slug}', [GalleryController::class, 'destroy']);
+    Route::post('/adm-hapus-data-galeri-foto-{slug}', [PhotoController::class, 'destroy']);
+
+
+
+    /*  School's Gallery Video  */
+    Route::get('/adm-galeri-video', [VideoController::class, 'index'])->name('video');
+
+    Route::get('/adm-tambah-data-galeri-video', [VideoController::class, 'create'])->name('addvideo');
+
+    Route::post('/adm-simpan-data-galeri-video', [VideoController::class, 'store']);
+
+    Route::get('/adm-edit-data-galeri-video-{slug}', [VideoController::class, 'edit'])->name('editvideo');
+
+    Route::post('/adm-update-data-galeri-video-{slug}', [VideoController::class, 'update'])->name('editvideo');
+
+    Route::post('/adm-hapus-data-galeri-video-{slug}', [VideoController::class, 'destroy']);
 
 
 
@@ -284,12 +305,12 @@ Route::group(['middleware' => ['teacher']], function () {
 
 /****************************************************************/
 /*                                                              */
-/*                     Super Admin Route                        */
+/*                        Admin Route                           */
 /*                                                              */
 /****************************************************************/
 
-Route::middleware(['superadmin'])->group(function () {
 
+Route::middleware(['admin'])->group(function () {
     /*  Teacher's Account  */
     Route::get('/adm-akun-guru', [AccountController::class, 'index'])->name('accteach');
 
@@ -299,24 +320,20 @@ Route::middleware(['superadmin'])->group(function () {
 
     Route::post('/adm-hapus-data-akun-{username}', [AccountController::class, 'destroy']);
 
-});
-
-
-
-/****************************************************************/
-/*                                                              */
-/*                 Super Admin, Admin Route                     */
-/*                                                              */
-/****************************************************************/
-
-Route::middleware(['admin'])->group(function () {
-
     //Teacher's Data
     Route::get('/adm-data-guru', [TeacherSchController::class, 'index'])->name('tcrdata');
 
-    Route::get('/adm-edit-data-guru', [TeacherSchController::class, 'edit'])->name('edittcrdata');
-
     Route::get('/adm-tambah-data-guru', [TeacherSchController::class, 'create'])->name('addtcrdata');
+
+    Route::post('/adm-store-data-guru', [TeacherSchController::class, 'store']);
+
+    Route::get('/adm-edit-data-guru-{slug}', [TeacherSchController::class, 'edit'])->name('edittcrdata');
+
+    Route::post('/adm-update-data-guru-{slug}', [TeacherSchController::class, 'update']);
+
+    Route::post('/adm-hapus-data-guru-{slug}', [TeacherSchController::class, 'destroy']);
+
+    Route::get('/adm-data-guru-download-pdf', [TeacherSchController::class, 'downloadPDF']);
 });
 
 
@@ -329,17 +346,29 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware(['teacher'])->group(function () {
 
     //Student's Data
-    Route::get('/adm-tambah-data-siswa', [StudentSchController::class, 'stdadddata'])->name('stddata');
+    Route::get('/adm-data-siswa-kelas-1', [StudentSchController::class, 'stddata1'])->name('stddata1');
 
-    Route::get('/adm-data-siwa-kelas-1', [StudentSchController::class, 'stddata1'])->name('stddata1');
+    Route::get('/adm-data-siswa-kelas-2', [StudentSchController::class, 'stddata2'])->name('stddata2');
 
-    Route::get('/adm-data-siwa-kelas-2', [StudentSchController::class, 'stddata2'])->name('stddata2');
+    Route::get('/adm-data-siswa-kelas-3', [StudentSchController::class, 'stddata3'])->name('stddata3');
 
-    Route::get('/adm-data-siwa-kelas-3', [StudentSchController::class, 'stddata3'])->name('stddata3');
+    Route::get('/adm-data-siswa-kelas-4', [StudentSchController::class, 'stddata4'])->name('stddata4');
 
-    Route::get('/adm-data-siwa-kelas-4', [StudentSchController::class, 'stddata4'])->name('stddata4');
+    Route::get('/adm-data-siswa-kelas-5', [StudentSchController::class, 'stddata5'])->name('stddata5');
 
-    Route::get('/adm-data-siwa-kelas-5', [StudentSchController::class, 'stddata5'])->name('stddata5');
+    Route::get('/adm-data-siswa-kelas-6', [StudentSchController::class, 'stddata6'])->name('stddata6');
 
-    Route::get('/adm-data-siwa-kelas-6', [StudentSchController::class, 'stddata6'])->name('stddata6');
+    Route::get('/adm-data-siswa', [StudentSchController::class, 'index'])->name('stddata');
+
+    Route::get('/adm-tambah-data-siswa', [StudentSchController::class, 'create'])->name('stdadddata');
+
+    Route::post('/adm-store-data-siswa', [StudentSchController::class, 'store']);
+
+    Route::get('/adm-edit-data-siswa-{slug}', [StudentSchController::class, 'edit'])->name('editstddata');
+
+    Route::post('/adm-update-data-siswa-{slug}', [StudentSchController::class, 'update']);
+
+    Route::post('/adm-delete-data-siswa-{slug}', [StudentSchController::class, 'destroy']);
+
+    Route::get('/adm-data-siswa-download-{class}-{category}', [StudentSchController::class, 'downloadPDF']);
 });

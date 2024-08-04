@@ -118,8 +118,7 @@
                       <i class="bi bi-people-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>{{ $students1 }}</h6>
 
                     </div>
                   </div>
@@ -141,8 +140,7 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                        <h6>{{ $students2 }}</h6>
 
                       </div>
                     </div>
@@ -164,8 +162,7 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                        <h6>{{ $students3 }}</h6>
 
                       </div>
                     </div>
@@ -187,8 +184,7 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                        <h6>{{ $students4 }}</h6>
 
                       </div>
                     </div>
@@ -210,8 +206,7 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                        <h6>{{ $students5 }}</h6>
 
                       </div>
                     </div>
@@ -233,8 +228,7 @@
                         <i class="bi bi-people-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                        <h6>{{ $students6 }}</h6>
 
                       </div>
                     </div>

@@ -13,6 +13,8 @@ class Teacher extends Model
 
     protected $primaryKey = 'id';
 
+    protected $fillable = ['name', 'slug', 'gender', 'birth_place', 'birth_date', 'status', 'img_name', 'teachers_datas_id'];
+
     public function teachers_data()
     {
         return $this->belongsTo(TeachersData::class, 'teachers_datas_id', 'id' );
