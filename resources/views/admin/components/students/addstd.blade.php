@@ -26,7 +26,7 @@
                       <div class="row mb-3">
                         <label for="name" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="name" type="text" class="form-control" id="name">
+                          <input name="name" type="text" class="form-control" id="inputname">
                         </div>
                       </div>
 
@@ -35,13 +35,13 @@
                         <div class="col-md-8 col-lg-9">
                             <div class="row">
                                 <div class="col">
-                                    <input name="nis" type="text" class="form-control" id="nis" placeholder="NIS">
+                                    <input name="nis" type="text" class="form-control" id="nis" placeholder="NIS" oninput="validateNumberInput(this)">
                                 </div>
                                 <div class="col-1" style="display: flex; justify-content:center; align-items: center;">
                                     <h4 style="margin: 0px">/</h4>
                                 </div>
                                 <div class="col">
-                                    <input name="nisn" type="text" class="form-control" id="nisn" placeholder="NISN">
+                                    <input name="nisn" type="text" class="form-control" id="nisn" placeholder="NISN" oninput="validateNumberInput(this)">
                                 </div>
                             </div>
                         </div>

@@ -16,19 +16,19 @@
             <div class="footer-header">
                 <h5>Link</h5>
                 <div class="footer-item">
-                    <a href="#">Visi & Misi</a>
-                    <a href="#">Fasilitas Sekolah</a>
-                    <a href="#">Ekstrakurikuler</a>
-                    <a href="#">Kegiatan Sekolah</a>
-                    <a href="#">Prestasi</a>
+                    <a href="/visi-misi-sekolah">Visi & Misi</a>
+                    <a href="/fasilitas-sekolah">Fasilitas Sekolah</a>
+                    <a href="/ekstrakurikuler">Ekstrakurikuler</a>
+                    <a href="/kegiatan-sekolah">Kegiatan Sekolah</a>
+                    <a href="/prestasi-kabupaten">Prestasi</a>
                 </div>
             </div>
             <div class="footer-header">
                 <h5>Informasi</h5>
                 <div class="footer-item">
-                    <a href="#">Berita</a>
-                    <a href="#">Pengumuman</a>
-                    <a href="#">Agenda</a>
+                    <a href="/berita-sekolah">Berita</a>
+                    <a href="/pengumuman-sekolah">Pengumuman</a>
+                    <a href="/agenda-sekolah">Agenda</a>
                 </div>
             </div>
             <div class="footer-loc">

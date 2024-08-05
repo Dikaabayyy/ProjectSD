@@ -1,5 +1,7 @@
 #information-about{
     padding-top: 122px;
+    background-color: rgb(248, 241, 229);
+    padding-bottom: 30px;
 }
 
 #header-information{
@@ -32,7 +34,7 @@
 #all-news .news-items {
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 30px;
+    padding: 0 30px 0 30px;
 }
 
 #all-news .news-items h5{
@@ -71,6 +73,20 @@
     color: rgb(248, 241, 229);
     font-weight: 700;
     border-radius: 3px;
+    border: 1px solid rgb(249, 186, 50);
+    transition: 0.3s;
+}
+
+#all-news .news-items .news-detail a:hover{
+    text-decoration: none;
+    background-color: rgb(248, 241, 229);
+    padding: 20px;
+    font-size: larger;
+    color: rgb(249, 186, 50);
+    font-weight: 700;
+    border-radius: 3px;
+    border: 1px solid rgb(249, 186, 50);
+    transition: 0.3s;
 }
 
 
@@ -134,6 +150,18 @@
     border-radius: 3px;
 }
 
+#all-announ .announ-items .announ-detail a:hover{
+    text-decoration: none;
+    background-color: rgb(248, 241, 229);
+    padding: 20px;
+    font-size: larger;
+    color: rgb(249, 186, 50);
+    font-weight: 700;
+    border-radius: 3px;
+    border: 1px solid rgb(249, 186, 50);
+    transition: 0.3s;
+}
+
 
 #information-about .container{
     display: flex;
@@ -156,7 +184,13 @@
     color: rgb(249, 186, 50);
     margin: 0 0 10px 0;
     font-size: x-large;
+    transition: 0.3s;
     font-weight: 700;
+}
+
+.agenda-detail .agenda-name h5:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 .agenda-date-desc{
@@ -213,6 +247,42 @@
     color: rgb(47, 49, 49);
 }
 
+
+#details-news{
+    display: flex;
+    flex-direction: column;
+}
+
+#details-news .details-news-img{
+    text-align: center;
+}
+
+#details-news .details-news-img img{
+    width: 137vh;
+    border-radius: 3px;
+}
+
+#details-news .details-news-items{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 20px 0 0px 0px;
+}
+
+#details-news .details-news-items span{
+    margin-bottom: 10px;
+    font-size: larger;
+    font-weight: 800;
+    color: rgb(66, 110, 134);
+}
+
+#details-news .details-news-items p{
+    margin-bottom: 0px;
+    font-size: medium;
+    font-weight: 500;
+    color: rgb(47, 49, 49);
+}
+
 @media (max-width: 774px) {
     #all-news .news-img img{
         width: 380px;
@@ -228,6 +298,10 @@
 
     #all-announ .announ-items {
         padding: 0px;
+    }
+
+    #details-news .details-news-img img{
+        width: 380px;
     }
 
     .agenda-date-desc .agenda-desc{

@@ -491,3 +491,28 @@
     text-decoration: none;
     transition: 0.5s;
 }
+
+.body-message{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: start;
+}
+
+.body-message span{
+    font-size: large;
+    font-weight: 700;
+    color: rgb(140, 0, 255);
+}
+
+.body-message h5{
+    font-size: larger;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.body-message p{
+    font-size: medium;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+}

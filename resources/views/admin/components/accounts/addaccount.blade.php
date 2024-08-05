@@ -24,7 +24,7 @@
                         @csrf
 
                       <div class="row mb-3">
-                        <label for="name" class="col-md-4 col-lg-3 col-form-label">Nama Guru</label>
+                        <label for="inputname" class="col-md-4 col-lg-3 col-form-label">Nama Guru</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="name" type="text" class="form-control" id="inputname" value="{{ old('name') }}">
                             @if ($errors->has('name'))
@@ -34,7 +34,7 @@
                       </div>
 
                       <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                        <label for="inputemail" class="col-md-4 col-lg-3 col-form-label">Email</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="email" type="text" class="form-control" id="inputemail" value="{{ old('email') }}">
                             @if ($errors->has('email'))

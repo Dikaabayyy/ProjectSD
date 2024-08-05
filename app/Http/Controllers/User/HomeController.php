@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\Messages;
 use App\Models\Agenda;
 use App\Models\AboutSch;
 use App\Models\VisiMisi;
@@ -134,7 +136,20 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+            'messages' => 'required',
+        ]);
+
+        if (empty($validateData['slug'])) {
+            $validateData['slug'] = strtolower(Str::slug($validateData['name'], '-'));
+        }
+
+        Messages::create($validateData);
+
+        return redirect()->back()->with('success', 'Pesan Anda Telah Terkirim!');
     }
 
     /**

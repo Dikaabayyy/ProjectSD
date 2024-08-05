@@ -1,6 +1,7 @@
 #gallery-about{
     padding-top: 122px;
     background-color: rgb(248, 241, 229);
+    padding-bottom: 30px;
 }
 
 #header-gallery{
@@ -25,10 +26,17 @@
 #gallery-about .card-image{
     width: 380px;
     margin: 10px 0 10px 0px;
+    transition: 0.3s;
+}
+
+#gallery-about .card-image:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 #gallery-about .card-image img{
     width: 100%;
+    transition: 0.3s;
 }
 
 #gallery-about .card-body{

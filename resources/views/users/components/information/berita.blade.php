@@ -29,10 +29,12 @@
                 <h5>{{ $n->name }}</h5>
                 <span>{{ $n->formatted_date }}</span>
                 <p>
-                    {{ $n->desc }}
+                    @foreach (explode("\n", $n->desc) as $paragraph)
+                        <p>{{ $paragraph }}</p>
+                    @endforeach
                 </p>
                 <div class="news-detail">
-                    <a href="">Baca Selengkapnya ...</a>
+                    <a href="/detail-berita-{{ $n->slug }}">Baca Selengkapnya ...</a>
                 </div>
             </div>
         </div>

@@ -18,25 +18,13 @@ class TeacherSchController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = 5;
-
-        $currentPage = $request->input('page', 1);
-
         $search = $request->input('search');
 
-        $offset = ($currentPage - 1) * $perPage;
-
-        $query = Teacher::query();
-
         if ($search) {
-            $query->where('name', 'like', '%' . $search . '%');
+            $teacher = Teacher::where('name', 'LIKE', "%$search%")->get(); // Ganti 'name' dengan kolom yang sesuai
+        } else {
+            $teacher = Teacher::all(); // Atau $items = collect(); untuk hasil kosong jika tidak ada query
         }
-
-        $teacher = $query->offset($offset)->limit($perPage)->get();
-
-        $totalData = $query->count();
-
-        $totalPages = ceil($totalData / $perPage);
 
         $shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 
@@ -72,7 +60,7 @@ class TeacherSchController extends Controller
             $dt->formatted_date_working = "$day_working $month_working $year_working";
         }
 
-        return view('admin.components.teachers.tcrdata', compact('teacher', 'currentPage', 'totalPages', 'totalData', 'search'));
+        return view('admin.components.teachers.tcrdata', compact('teacher', 'search'));
     }
 
     /**

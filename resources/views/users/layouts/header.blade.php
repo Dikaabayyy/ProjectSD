@@ -74,14 +74,14 @@
                         </div>
                     </span>
                     <span>
-                        <a href="/berita-sekolah" class="{{ Route::is('berita') ? 'btn-nav-link' : 'btn-nav-link collapsed' }}">Berita</a>
+                        <a href="/berita-sekolah" class="{{ Route::is('berita', 'detail-berita') ? 'btn-nav-link' : 'btn-nav-link collapsed' }}">Berita</a>
                     </span>
                     <span>
-                        <a href="#" id="hoverBtnInfo" class="{{ Route::is('pengumuman', 'agenda') ? 'btn-nav-link hover-btn' : 'hover-btn btn-nav-link collapsed' }}">Informasi</a>
+                        <a href="#" id="hoverBtnInfo" class="{{ Route::is('pengumuman', 'agenda', 'detail-pengumuman') ? 'btn-nav-link hover-btn' : 'hover-btn btn-nav-link collapsed' }}">Informasi</a>
                         <div class="card-hover-info" id="card-hover-info">
                             <div class="card-dropdown">
                                 <div class="info-sch">
-                                    <a href="/pengumuman-sekolah" class="{{ Route::is('pengumuman') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Pengumuman</a>
+                                    <a href="/pengumuman-sekolah" class="{{ Route::is('pengumuman', 'detail-pengumuman') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Pengumuman</a>
                                     <a href="/agenda-sekolah" class="{{ Route::is('agenda') ? 'btn-nav-drp' : ' btn-nav-drp coll' }}">Agenda</a>
                                 </div>
                             </div>
@@ -154,13 +154,13 @@
                         </div>
                     </span>
                     <span>
-                        <a href="/berita-sekolah" class="{{ Route::is('berita') ? 'btn-nav-drop' : 'btn-nav-drop collapsed' }}">Berita</a>
+                        <a href="/berita-sekolah" class="{{ Route::is('berita', 'detail-berita') ? 'btn-nav-drop' : 'btn-nav-drop collapsed' }}">Berita</a>
                     </span>
                     <span>
-                        <a href="" class="{{ Route::is('pengumuman', 'agenda') ? 'btn-nav-drop' : 'btn-nav-drop collapsed' }}">Informasi</a>
+                        <a href="" class="{{ Route::is('pengumuman', 'agenda', 'detail-pengumuman') ? 'btn-nav-drop' : 'btn-nav-drop collapsed' }}">Informasi</a>
                         <div class="profil-item-responsive">
                             <span>
-                                <a href="/pengumuman-sekolah" class="{{ Route::is('pengumuman') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Pengumuman</a>
+                                <a href="/pengumuman-sekolah" class="{{ Route::is('pengumuman', 'detail-pengumuman') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Pengumuman</a>
                             </span>
                             <span>
                                 <a href="/agenda-sekolah" class="{{ Route::is('agenda') ? 'btn-nav-item' : 'btn-nav-item not-act' }}">Agenda</a>

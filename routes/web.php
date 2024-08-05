@@ -72,9 +72,17 @@ Route::get('/prestasi-nasional', [HomeController::class, 'presnas'])->name('pres
 
 Route::get('/berita-sekolah', [InfoController::class, 'berita'])->name('berita');
 
+Route::get('/detail-berita-{slug}', [InfoController::class, 'detail_berita'])->name('detail-berita');
+
 Route::get('/pengumuman-sekolah', [InfoController::class, 'pengumuman'])->name('pengumuman');
 
+Route::get('/detail-pengumuman-{slug}', [InfoController::class, 'detail_pengumuman'])->name('detail-pengumuman');
+
 Route::get('/agenda-sekolah', [InfoController::class, 'agenda'])->name('agenda');
+
+
+/*  Pesan Hubungi Kami   */
+Route::post('/kirim-pesan', [HomeController::class, 'store'])->name('kirim-pesan');
 
 
 /*  Galeri Sekolah  */
@@ -105,14 +113,10 @@ Route::group(['middleware' => ['teacher']], function () {
     /*  Dashboard  */
     Route::get('/adm-dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-
-
     /*  About School  */
     Route::get('/adm-tentang-sekolah', [AboutSchController::class, 'schabout'])->name('aboutsch');
 
     Route::post('/adm-update-tentang-sekolah-{slug}', [AboutSchController::class, 'schabout_update']);
-
-
 
     /*  Visi&Misi School  */
     Route::get('/adm-visi-misi', [AboutSchController::class, 'visimisi'])->name('visimisi');
@@ -121,26 +125,18 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::post('/adm-update-visi-misi-{slug}', [AboutSchController::class, 'update_visimisi']);
 
-
-
     /*  School Goals  */
     Route::get('/adm-tujuan-sekolah', [AboutSchController::class, 'schgoals'])->name('goals');
 
     Route::post('/adm-update-tujuan-sekolah-{slug}', [AboutSchController::class, 'schgoals_update']);
-
-
 
     /*  School Greets  */
     Route::get('/adm-sambutan-kepala-sekolah', [AboutSchController::class, 'schgreets'])->name('greets');
 
     Route::post('/adm-update-sambutan-kepala-sekolah-{slug}', [AboutSchController::class, 'schgreets_update']);
 
-
-
     /*  School Structure  */
     Route::get('/adm-struktur-sekolah', [AboutSchController::class, 'schstructure'])->name('structure');
-
-
 
     /*  Extracurricular School  */
     Route::get('/adm-extrakurikuler', [ExtraController::class, 'index'])->name('extra');
@@ -157,8 +153,6 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::get('/adm-extrakurikuler-download-pdf', [ExtraController::class, 'downloadPDF']);
 
-
-
     /*  School's Activity  */
     Route::get('/adm-kegiatan-sekolah', [ActivityController::class, 'index'])->name('activity');
 
@@ -173,8 +167,6 @@ Route::group(['middleware' => ['teacher']], function () {
     Route::post('/adm-hapus-data-kegiatan-{slug}', [ActivityController::class, 'destroy']);
 
     Route::get('/adm-kegiatan-download-pdf', [ActivityController::class, 'downloadPDF']);
-
-
 
     /*  School's Facility  */
     Route::get('/adm-fasilitas-sekolah', [FacilityController::class, 'index'])->name('facility');
@@ -191,8 +183,6 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::get('/adm-fasilitas-download-pdf', [FacilityController::class, 'downloadPDF']);
 
-
-
     /*  School's News  */
     Route::get('/adm-berita-sekolah', [NewsController::class, 'index'])->name('news');
 
@@ -207,8 +197,6 @@ Route::group(['middleware' => ['teacher']], function () {
     Route::post('/adm-hapus-data-berita-{slug}', [NewsController::class, 'destroy']);
 
     Route::get('/adm-berita-download-pdf', [NewsController::class, 'downloadPDF']);
-
-
 
     /*  School's Announs  */
     Route::get('/adm-pengumuman-sekolah', [AnnounController::class, 'index'])->name('announs');
@@ -225,8 +213,6 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::get('/adm-pengumuman-download-pdf', [AnnounController::class, 'downloadPDF']);
 
-
-
     /*  School's Agenda  */
     Route::get('/adm-agenda-sekolah', [AgendaController::class, 'index'])->name('agenda');
 
@@ -241,8 +227,6 @@ Route::group(['middleware' => ['teacher']], function () {
     Route::post('/adm-hapus-data-agenda-{slug}', [AgendaController::class, 'destroy']);
 
     Route::get('/adm-agenda-download-pdf', [AgendaController::class, 'downloadPDF']);
-
-
 
     /*  School's Performance  */
     Route::get('/adm-prestasi-sekolah', [PerformanceController::class, 'index'])->name('performance');
@@ -259,8 +243,6 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::get('/adm-prestasi-download-pdf', [PerformanceController::class, 'downloadPDF']);
 
-
-
     /*  School's Gallery Photo  */
     Route::get('/adm-galeri-foto', [PhotoController::class, 'index'])->name('photo');
 
@@ -274,8 +256,6 @@ Route::group(['middleware' => ['teacher']], function () {
 
     Route::post('/adm-hapus-data-galeri-foto-{slug}', [PhotoController::class, 'destroy']);
 
-
-
     /*  School's Gallery Video  */
     Route::get('/adm-galeri-video', [VideoController::class, 'index'])->name('video');
 
@@ -288,8 +268,6 @@ Route::group(['middleware' => ['teacher']], function () {
     Route::post('/adm-update-data-galeri-video-{slug}', [VideoController::class, 'update'])->name('editvideo');
 
     Route::post('/adm-hapus-data-galeri-video-{slug}', [VideoController::class, 'destroy']);
-
-
 
     /*   User Profile   */
     Route::get('/adm-profile', [ProfileController::class, 'index'])->name('profile');
@@ -334,6 +312,11 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/adm-hapus-data-guru-{slug}', [TeacherSchController::class, 'destroy']);
 
     Route::get('/adm-data-guru-download-pdf', [TeacherSchController::class, 'downloadPDF']);
+
+    //Messages Data
+    Route::get('/messages', [AdminController::class, 'messages'])->name('messages');
+
+    Route::post('/adm-hapus-pesan-{slug}', [AdminController::class, 'destroy_messages']);
 });
 
 

@@ -244,13 +244,15 @@
                         <div class="contact-form-title">
                             <h6>Kirim Pesan</h6>
                         </div>
-                        <form action="" class="form-contact">
+                        <form action="/kirim-pesan" class="form-contact" enctype="multipart/form-data" method="POST">
+                            @csrf
+
                             <input type="text" name="name" class="name" id="" placeholder="Nama" style="outline: none;">
                             <div class="contact-email-no">
                                 <input type="email" name="email" id="" placeholder="Email"  style="outline: none;">
                                 <input type="text" name="no_hp" placeholder="No Hp"  style="outline: none;">
                             </div>
-                            <textarea name="message" placeholder="Tulis Pesan Anda" rows="5" style="outline: none;"></textarea>
+                            <textarea name="messages" placeholder="Tulis Pesan Anda" rows="5" style="outline: none;"></textarea>
                             <button type="submit" class="btn">Kirim Pesan</button>
                         </form>
                     </div>

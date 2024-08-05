@@ -33,6 +33,12 @@
     width: 137vh;
     border-radius: 3px;
     margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+#about-items img:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 @media (max-width: 774px) {
@@ -73,6 +79,12 @@
     font-weight: bolder;
     padding: 5px 0 0 0;
     font-size: xx-large;
+    transition: 0.3s;
+}
+
+#visimisi-items h4:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 #visimisi-items p{
@@ -103,6 +115,12 @@
     padding: 5px 0 20px 0;
     font-size: xx-large;
     border-bottom: 3px solid rgb(249, 186, 50);
+    transition: 0.3s;
+}
+
+#greets-items h4:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 #greets-items .greets{
@@ -129,6 +147,12 @@
     padding: 5px 0 20px 0;
     font-size: xx-large;
     border-bottom: 3px solid rgb(249, 186, 50);
+    transition: 0.3s;
+}
+
+#goals-items h4:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 #goals-items .goals{
@@ -163,6 +187,12 @@
     width: 350px;
     margin: 0 0 20px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#activity-items .activity-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #activity-items .activity-name{
@@ -206,6 +236,12 @@
     width: 350px;
     margin: 0 0 20px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#extra-items .extra-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #extra-items .extra-name{
@@ -249,6 +285,12 @@
     width: 350px;
     margin: 0 0 20px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#facility-items .facility-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #facility-items .facility-name{
@@ -307,6 +349,12 @@
     width: 350px;
     margin: 0 0 10px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#preskab-items .preskab-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #preskab-items .preskab-name{
@@ -385,6 +433,12 @@
     width: 350px;
     margin: 0 0 10px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#presprov-items .presprov-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #presprov-items .presprov-name{
@@ -463,6 +517,12 @@
     width: 350px;
     margin: 0 0 10px 0;
     border-radius: 3px;
+    transition: 0.3s;
+}
+
+#presnas-items .presnas-img img:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 #presnas-items .presnas-name{

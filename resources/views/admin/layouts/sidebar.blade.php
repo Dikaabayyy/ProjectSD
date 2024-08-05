@@ -37,11 +37,11 @@
               <i class="bi bi-circle-fill"></i><span>Sambutan Kepala Sekolah</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="/adm-struktur-sekolah" class="{{ Route::is('structure') ? 'nav-link' : 'nav-link collapsed' }}">
               <i class="bi bi-circle-fill"></i><span>Struktur Organisasi</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li><!-- End School Profile Nav -->
 
@@ -160,6 +160,12 @@
             <li class="nav-item">
                 <a class="{{ Route::is('tcrdata', 'edittcrdata', 'addtcrdata') ? 'nav-link' : 'nav-link collapsed' }}" href="/adm-data-guru">
                     <i class="bi bi-person-vcard"></i><span>Data Guru</span>
+                </a>
+            </li><!-- End Teacher's Data Nav -->
+
+            <li class="nav-item">
+                <a class="{{ Route::is('messages') ? 'nav-link' : 'nav-link collapsed' }}" href="/messages">
+                    <i class="bi bi-chat-left-text"></i></i><span>Pesan Masuk</span>
                 </a>
             </li><!-- End Teacher's Data Nav -->
         @endif

@@ -158,39 +158,6 @@
                 </table>
                 <!-- End Table with stripped rows -->
             </div>
-            <div class="card-footer" id="footer-pagination">
-
-                <!-- Pagination Links -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                       <!-- Previous Page Link -->
-                        @if ($currentPage > 1)
-                            <li><a href="{{ url()->current() }}?page={{ $currentPage - 1 }}">&laquo;</a></li>
-                        @else
-                            <li class="disabled"><span>&laquo;</span></li>
-                        @endif
-
-                        @for ($i = 1; $i <= $totalPages; $i++)
-                            @if ($i == $currentPage)
-                                <li class="active"><span>{{ $i }}</span></li>
-                            @else
-                                <li><a href="{{ url()->current() }}?page={{ $i }}">{{ $i }}</a></li>
-                            @endif
-                        @endfor
-                      <!-- Next Page Link -->
-                        @if ($currentPage < $totalPages)
-                            <li><a href="{{ url()->current() }}?page={{ $currentPage + 1 }}">&raquo;</a></li>
-                        @else
-                            <li class="disabled"><span>&raquo;</span></li>
-                        @endif
-                    </ul>
-                    <div class="totaldata">
-                        <span>
-                            Total {{ $totalData }} Data Guru
-                        </span>
-                    </div>
-                  </nav>
-            </div>
 
           </div>
 

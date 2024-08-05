@@ -11,6 +11,7 @@ use App\Models\VisiMisi;
 use App\Models\GoalsSch;
 use App\Models\Teacher;
 use App\Models\Students;
+use App\Models\Messages;
 
 class AdminController extends Controller
 {
@@ -31,6 +32,21 @@ class AdminController extends Controller
         $students5 = Students::where('class', '5')->count();
         $students6 = Students::where('class', '6')->count();
         return view('admin.components.dashboard', compact('about', 'visimisi', 'goals', 'teacher', 'students1', 'students2', 'students3', 'students4', 'students5', 'students6'));
+    }
+
+    public function messages()
+    {
+        $message = Messages::get();
+        return view('admin.components.messages.messages', compact('message'));
+    }
+
+    public function destroy_messages($slug)
+    {
+        $message = Messages::where('slug', $slug)->firstOrFail();
+
+        $message->delete();
+
+        return redirect()->route('messages')->with('success', 'Data Telah dihapus!');
     }
 
     /**

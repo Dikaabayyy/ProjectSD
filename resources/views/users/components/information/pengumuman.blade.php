@@ -32,7 +32,7 @@
                     {{ $a->desc }}
                 </p>
                 <div class="announ-detail">
-                    <a href="">Baca Selengkapnya ...</a>
+                    <a href="/detail-pengumuman-{{ $a->slug }}">Baca Selengkapnya ...</a>
                 </div>
             </div>
         </div>

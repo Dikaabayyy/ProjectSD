@@ -88,6 +88,45 @@ class InfoController extends Controller
         return view('users.components.information.agenda', compact('agendas'));
     }
 
+    public function detail_berita($slug)
+    {
+        $berita = News::where('slug', $slug)->get();
+
+        $shortMonths = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        foreach ($berita as $beritas) {
+            $date = Carbon::parse($beritas->created_at);
+            $day = $date->format('d');
+            $month = $shortMonths[$date->month - 1];
+            $year = $date->format('Y');
+
+            $beritas->day = $day;
+            $beritas->month = $month;
+            $beritas->formatted_date = "$day $month $year";
+        }
+
+        return view('users.components.information.detailberita', compact('berita'));
+    }
+
+    public function detail_pengumuman($slug)
+    {
+        $pengumuman = News::where('slug', $slug)->get();
+
+        $shortMonths = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        foreach ($pengumuman as $pengumumans) {
+            $date = Carbon::parse($pengumumans->created_at);
+            $day = $date->format('d');
+            $month = $shortMonths[$date->month - 1];
+            $year = $date->format('Y');
+
+            $pengumumans->day = $day;
+            $pengumumans->month = $month;
+            $pengumumans->formatted_date = "$day $month $year";
+        }
+
+        return view('users.components.information.detailpengumuman', compact('pengumuman'));
+    }
 
     /**
      * Display a listing of the resource.

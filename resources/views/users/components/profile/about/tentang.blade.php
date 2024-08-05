@@ -29,8 +29,8 @@
             </div>
             <div class="about-desc">
                 @foreach (explode("\n", $a->about) as $paragraph)
-                <p>{{ $paragraph }}</p>
-            @endforeach
+                    <p>{{ $paragraph }}</p>
+                @endforeach
             </div>
 
             @endforeach
