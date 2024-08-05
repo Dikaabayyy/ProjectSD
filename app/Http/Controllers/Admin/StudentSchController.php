@@ -15,7 +15,7 @@ class StudentSchController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function stddata1()
+    public function stddata1(Request $request)
     {
         $students1a = Students::where('class', '1')->where('category', 'A')->get();
         $students1b = Students::where('class', '1')->where('category', 'B')->get();
